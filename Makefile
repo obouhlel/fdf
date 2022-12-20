@@ -1,14 +1,16 @@
-NAME	= fdf
+NAME		= fdf
 
-FOLDER	= ./srcs/fdf/
+DIR_SRCS	= ./srcs/fdf/
 
-SRCS	= 
+DIR_INCS	= ./includes/*.h
 
-OBJS	= ${SRCS:.c=.o}
+SRCS		= 
 
-DEPS	= ${SRCS:.c=.d}
+OBJS		= ${SRCS:.c=.o}
 
-CC		= gcc
+INCS		= fdf.h
 
-CFLAGS	= -Wall -Wextra -Werror -g3
+CC			= gcc
+
+CFLAGS		= -Wall -Wextra -Werror -g3
 

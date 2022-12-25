@@ -31,7 +31,7 @@ ${NAME}		: ${OBJS} ${INCS}
 			@make -C srcs/minilibx
 			@mv srcs/minilibx/libmlx.a lib/
 			@mv srcs/minilibx/libmlx_Linux.a lib/
-			${CC} ${CFLAGS} ${OBJS} ${LIBS} -o ${NAME}
+			${CC} ${CFLAGS} ${OBJS} ${LIBS} -o ${NAME} -lXext -lX11 -lm -lz
 
 clean		:
 			@make clean -C srcs/libft
@@ -46,5 +46,5 @@ re			: fclean all
 
 .PHONY		: all clean fclean re
 
-%.o			: %.c
-			${CC} ${CFLAGS} -c $< -o $@
+%.o: %.c
+	${CC} ${CFLAGS} -I/usr/include -Imlx_linux -O3 -c $< -o $@

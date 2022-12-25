@@ -1,0 +1,9 @@
+#folder
+.vscode/
+lib/
+objs/
+
+#files
+*.a
+*.o
+fdf

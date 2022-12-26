@@ -2,7 +2,7 @@
 
 NAME		= fdf
 
-SRCS		= srcs/main.c
+SRCS		= srcs/fdf/main.c srcs/fdf/parsing.c srcs/fdf/ft_put_line.c srcs/fdf/window.c
 
 OBJS		= $(SRCS:%.c=%.o)
 
@@ -44,7 +44,11 @@ fclean		: clean
 
 re			: fclean all
 
-.PHONY		: all clean fclean re
+norme		:
+			@norminette includes/fdf.h includes/libft.h includes/get_next_line.h
+			@norminette srcs/fdf/ srcs/libft/ srcs/gnl/
 
-%.o: %.c
-	${CC} ${CFLAGS} -I/usr/include -Imlx_linux -O3 -c $< -o $@
+.PHONY		: all clean fclean re norme
+
+%.o         : %.c
+	        ${CC} ${CFLAGS} -I/usr/include -Imlx_linux -O3 -c $< -o $@

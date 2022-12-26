@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 12:49:42 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/26 20:11:50 by obouhlel         ###   ########.fr       */
+/*   Created: 2022/12/26 18:43:31 by obouhlel          #+#    #+#             */
+/*   Updated: 2022/12/26 20:05:14 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/libft.h"
+#include "../../includes/fdf.h"
 
-//to joint two string
-char	*ft_strjoin(char *s1, char *s2)
+int	main(int ac, char **av)
 {
-	char	*s;
-	size_t	len1;
-	size_t	len2;
+	int	fd;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	s = (char *)ft_calloc((len1 + len2 + 1), sizeof(char));
-	if (!s)
-		return (NULL);
-	(void)ft_strlcat(s, s1, (len1 + 1));
-	(void)ft_strlcat(s, s2, (len1 + len2 + 1));
-	if (s1)
-		free(s1);
-	return (s);
+	if (ac != 2)
+	{
+		ft_putendl_fd("Error", 1);
+		return (0);
+	}
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putendl_fd("Error", 1);
+		return (0);
+	}
+	ft_main_parsing(fd);
+	return (0);
 }

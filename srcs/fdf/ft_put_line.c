@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_put_line.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 17:57:11 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/25 20:06:22 by obouhlel         ###   ########.fr       */
+/*   Created: 2022/12/26 13:15:04 by obouhlel          #+#    #+#             */
+/*   Updated: 2022/12/26 16:07:03 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf.h"
 
-int	close_window(void)
+void	ft_put_line(t_line line, t_info info)
 {
-	exit(0);
-}
+	int	color;
+	int	x;
+	int	y;
 
-int	main(void)
-{
-	t_data	*data;
-
-	data = (t_data *)malloc(sizeof(t_data));
-	if (!data)
-		return (0);
-	data->mlx_ptr = mlx_init();
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_X, WIN_Y, "FDF obouhlel");
-	mlx_hook(data->win_ptr, 17, 0, &close_window, 0);
-	mlx_loop(data->mlx_ptr);
-	return (0);
+	color = mlx_get_color_value(info.mlx, 0xFF00000);
+	x = line.x_1;
+	while (x < line.x_2)
+	{
+		y = line.y_1 + (line.y_2 - line.y_1) * \
+			(x - line.x_1) / (line.x_2 - line.x_1);
+		mlx_pixel_put(info.mlx, info.win, x, y, color);
+		x++;
+	}
 }

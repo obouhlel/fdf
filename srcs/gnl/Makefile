@@ -19,7 +19,7 @@ RM		= rm -f
 all		: ${NAME}
 
 ${NAME}	: ${OBJS} ${INCS}
-		${AR} ${NAME} $<
+		${AR} ${NAME} ${OBJS}
 
 clean	:
 		${RM} ${OBJS}

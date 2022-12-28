@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:21:57 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 21:07:50 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 21:28:51 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	*ft_check_parsing_color(char *line, int *i)
 	else
 		return (FAIL);
 	j = 0;
-	while (ft_strchr(hex, line[i_bis]))
+	while (ft_strchr(hex, line[i_bis]) && line[i_bis])
 	{
 		i_bis++;
 		j++;
@@ -41,6 +41,7 @@ static void	*ft_check_parsing_color(char *line, int *i)
 
 void	*ft_check_parsing(char *line)
 {
+	const int	len = ft_strlen(line);
 	int			i;
 	int			tmp;
 
@@ -50,8 +51,10 @@ void	*ft_check_parsing(char *line)
 		if (line[i] == '-')
 			i++;
 		tmp = i;
-		while (ft_isdigit(line[i]))
+		while (ft_isdigit(line[i]) && line[i])
 			i++;
+		if (line[i] == 0)
+			break ;
 		if (tmp == i)
 			return (FAIL);
 		if (line[i] == ',')
@@ -59,9 +62,15 @@ void	*ft_check_parsing(char *line)
 			i++;
 			if (!ft_check_parsing_color(line, &i))
 				return (FAIL);
+			if (line[i] == 0)
+				break ;
 		}
-		if (line[i] == ' ')
+		while (line[i] == ' ' && line[i])
 			i++;
+		if (line[i] == 0)
+			break ;
+		if (i == (len - 1) && line[i] == '\n')
+			break ;
 	}
 	return (SUCCESS);
 }

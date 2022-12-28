@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 17:57:31 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 21:45:09 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_color_clear(t_color *color);
 t_color	*ft_color_last(t_color *color);
 t_color	*ft_color_new(char *hex, int col, int line);
 int		ft_color_size(t_color *color);
-
+void	ft_color_print(t_color *color);
 //map
 typedef struct s_map
 {
@@ -85,6 +85,7 @@ void	ft_map_clear(t_map *map);
 t_map	*ft_map_last(t_map *map);
 t_map	*ft_map_new(int *line, int col_max, int id_line);
 int		ft_map_size(t_map *map);
+void	ft_map_print(t_map *map);
 
 //structure mlx
 typedef struct s_vars
@@ -104,7 +105,7 @@ typedef struct s_line
 }	t_line;
 
 //vars
-void	*ft_init_vars(t_vars *vars);
+t_vars	*ft_init_vars(t_vars *vars);
 
 //parsing
 void	*ft_main_parsing(int fd, t_vars *vars);

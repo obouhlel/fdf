@@ -6,3 +6,4 @@ objs/
 #files
 *.a
 *.o
+srcs/minilibx/test/mlx-test

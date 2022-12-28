@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   check_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:21:57 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 17:53:45 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 21:07:50 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,26 @@
 static void	*ft_check_parsing_color(char *line, int *i)
 {
 	const char	*hex = "0123456789ABCDEF";
+	int			i_bis;
 	int			j;
 
-	if (line[*i] == '0')
-		*i++;
+	i_bis = *i;
+	if (line[i_bis] == '0')
+		i_bis++;
 	else
 		return (FAIL);
-	if (line[*i] == 'x')
-		*i++;
+	if (line[i_bis] == 'x')
+		i_bis++;
 	else
 		return (FAIL);
 	j = 0;
-	while (ft_strchr(hex, line[*i]))
+	while (ft_strchr(hex, line[i_bis]))
 	{
-		*i++;
+		i_bis++;
 		j++;
 	}
-	if (j != 5)
+	*i = i_bis;
+	if (j != 6)
 		return (FAIL);
 	return (SUCCESS);
 }
@@ -39,26 +42,26 @@ static void	*ft_check_parsing_color(char *line, int *i)
 void	*ft_check_parsing(char *line)
 {
 	int			i;
+	int			tmp;
 
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == '-' || ft_isdigit(line[i]))
+		if (line[i] == '-')
 			i++;
-		else
-			return (FAIL);
+		tmp = i;
 		while (ft_isdigit(line[i]))
 			i++;
+		if (tmp == i)
+			return (FAIL);
 		if (line[i] == ',')
 		{
 			i++;
-			if (ft_check_parsing_color(line, &i) == FAIL)
+			if (!ft_check_parsing_color(line, &i))
 				return (FAIL);
 		}
-		else if (line[i] == ' ')
+		if (line[i] == ' ')
 			i++;
-		else
-			retrun (FAIL);
 	}
 	return (SUCCESS);
 }

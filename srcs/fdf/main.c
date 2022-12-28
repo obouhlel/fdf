@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 18:43:31 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/26 20:05:14 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 12:12:21 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	main(int ac, char **av)
 {
-	int	fd;
+	int		fd;
+	t_vars	*vars;
 
 	if (ac != 2)
 	{
@@ -27,6 +28,7 @@ int	main(int ac, char **av)
 		ft_putendl_fd("Error", 1);
 		return (0);
 	}
-	ft_main_parsing(fd);
+	ft_init_vars(vars);
+	ft_main_parsing(fd, vars);
 	return (0);
 }

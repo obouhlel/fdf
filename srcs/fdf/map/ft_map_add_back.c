@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_map_add_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 12:49:42 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 13:03:16 by obouhlel         ###   ########.fr       */
+/*   Created: 2022/12/28 11:02:14 by obouhlel          #+#    #+#             */
+/*   Updated: 2022/12/28 13:34:15 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/libft.h"
+#include "../../../includes/fdf.h"
 
-//to joint two string
-char	*ft_strjoin(char *s1, char *s2)
+void	ft_map_add_back(t_map **map, t_map *new)
 {
-	char	*s;
-	size_t	len1;
-	size_t	len2;
+	t_map	*last;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	s = (char *)ft_calloc((len1 + len2 + 1), sizeof(char));
-	if (!s)
-		return (NULL);
-	(void)ft_strlcat(s, s1, (len1 + 1));
-	(void)ft_strlcat(s, s2, (len1 + len2 + 1));
-	return (s);
+	last = NULL;
+	if (!map | !new)
+		return ;
+	if (!*map)
+	{
+		(*map) = new;
+		return ;
+	}
+	last = ft_map_last(*map);
+	if (!last)
+		return ;
+	last->next_line = new;
 }

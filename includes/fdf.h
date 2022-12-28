@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/26 20:01:56 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:28:33 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,44 @@ enum e_event {
 //key
 # define ESCAPE	65307
 
+//color
+typedef struct s_color
+{
+	int				col;
+	int				line;
+	char			*hex;
+	struct s_color	*next;
+}	t_color;
+
+void	ft_color_add_back(t_color **color, t_color *new);
+void	ft_color_add_back(t_color **color, t_color *new);
+void	ft_color_clear(t_color *color);
+t_color	*ft_color_last(t_color *color);
+t_color	*ft_color_new(char *hex, int col, int line);
+int		ft_color_size(t_color *color);
+
+//map
+typedef struct s_map
+{
+	int				*line;
+	struct s_map	*next_line;
+}	t_map;
+
+void	ft_map_add_back(t_map **map, t_map *new);
+void	ft_map_add_back(t_map **map, t_map *new);
+void	ft_map_clear(t_map *map);
+t_map	*ft_map_last(t_map *map);
+t_map	*ft_map_new(int *line);
+int		ft_map_size(t_map *map);
+
 //structure mlx
-typedef struct s_info
+typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
-}	t_info;
+	t_map		*map;
+	t_color		*color;
+}	t_vars;
 
 typedef struct s_line
 {
@@ -68,14 +100,15 @@ typedef struct s_line
 }	t_line;
 
 //parsing
-void	*ft_main_parsing(int fd);
+void	*ft_main_parsing(int fd, t_vars *vars);
+void	*ft_vars_color(t_color **color, char **strs, int line);
 
 //trace a line
-void	ft_put_line(t_line line, t_info info);
+void	ft_put_line(t_line line, t_vars vars);
 
 //window
-int		window_init(t_info info);
-int		key_press(int keycode, t_info *info);
-int		close_window(t_info *info);
+int		window_init(t_vars *vars);
+int		key_press(int keycode, t_vars *vars);
+int		close_window(t_vars *vars);
 
 #endif

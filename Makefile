@@ -2,7 +2,9 @@
 
 NAME		= fdf
 
-SRCS		= srcs/fdf/main.c srcs/fdf/parsing.c srcs/fdf/ft_put_line.c srcs/fdf/window.c
+SRCS		= srcs/fdf/main.c	srcs/fdf/parsing.c	srcs/fdf/ft_put_line.c	srcs/fdf/window.c \
+			srcs/fdf/color/ft_color_add_front.c srcs/fdf/color/ft_color_add_back srcs/fdf/color/ft_color_clear.c \
+			srcs/fdf/color/ft_color_new.c srcs/fdf/color/ft_color_last.c srcs/fdf/color/ft_color_size.c
 
 OBJS		= $(SRCS:%.c=%.o)
 

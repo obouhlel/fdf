@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:19:08 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 14:28:16 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:03:34 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_color	*ft_color_new(char *hex, int col, int line)
 	new = NULL;
 	new = (t_color *)malloc(sizeof(t_color));
 	if (!new)
-		return (NULL);
+		return (FAIL);
 	new->col = col;
 	new->line = line;
 	new->hex = hex;

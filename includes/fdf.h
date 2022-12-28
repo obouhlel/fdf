@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 14:28:33 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:02:39 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
 # include <errno.h>
 # include <math.h>
 
-# define OK (void *)1
+# define SUCCESS	(void *)1
+# define FAIL		(void *)0
 
 //window size
 # define WIN_X 500
@@ -71,7 +72,10 @@ int		ft_color_size(t_color *color);
 //map
 typedef struct s_map
 {
+	int				col_max;
+	int				id_line;
 	int				*line;
+	struct s_map	*previous_line;
 	struct s_map	*next_line;
 }	t_map;
 
@@ -79,7 +83,7 @@ void	ft_map_add_back(t_map **map, t_map *new);
 void	ft_map_add_back(t_map **map, t_map *new);
 void	ft_map_clear(t_map *map);
 t_map	*ft_map_last(t_map *map);
-t_map	*ft_map_new(int *line);
+t_map	*ft_map_new(int *line, int col_max, int id_line);
 int		ft_map_size(t_map *map);
 
 //structure mlx
@@ -101,7 +105,6 @@ typedef struct s_line
 
 //parsing
 void	*ft_main_parsing(int fd, t_vars *vars);
-void	*ft_vars_color(t_color **color, char **strs, int line);
 
 //trace a line
 void	ft_put_line(t_line line, t_vars vars);

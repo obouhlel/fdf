@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:10:36 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 14:34:38 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:03:34 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,22 @@ void	*ft_vars_color(t_color **color, char **strs, int line)
 		{
 			strs_color = ft_split(strs[i], ',');
 			if (!strs_color)
-				return (NULL);
+				return (FAIL);
 			free(strs[i]);
 			strs[i] = ft_strdup(strs_color[0]);
 			if (!strs[i])
-				return (NULL);
+				return (FAIL);
 			color_tmp = ft_color_new(strs_color[1], (i + 1), line);
 			if (!color_tmp)
-				return (NULL);
+				return (FAIL);
 			ft_color_add_back(color, color_tmp);
 		}
 		i++;
 	}
-	return (OK);
+	return (SUCCESS);
 }
 
-void	*ft_line_value(t_map **map, char **strs)
+void	*ft_line_value(t_map **map, char **strs, int id_line)
 {
 	int		i;
 	int		col_max;
@@ -52,17 +52,17 @@ void	*ft_line_value(t_map **map, char **strs)
 		col_max++;
 	line = (int *)malloc(sizeof(int) * col_max);
 	if (!line)
-		return (NULL);
+		return (FAIL);
 	while (strs[i])
 	{
 		line[i] = atoi(strs[i]);
 		i++;
 	}
-	map_tmp = ft_map_new(line);
+	map_tmp = ft_map_new(line, col_max, id_line);
 	if (!map_tmp)
-		return (NULL);
+		return (FAIL);
 	ft_map_add_back(map, map_tmp);
-	return (OK);
+	return (SUCCESS);
 }
 
 char	**ft_free_strs(char **strs)
@@ -76,7 +76,7 @@ char	**ft_free_strs(char **strs)
 		i++;
 	}
 	free(strs);
-	return (NULL);
+	return (FAIL);
 }
 
 void	*ft_main_parsing(int fd, t_vars *vars)
@@ -93,14 +93,14 @@ void	*ft_main_parsing(int fd, t_vars *vars)
 			break ;
 		strs = ft_split(str, ' ');
 		if (!strs)
-			return (NULL);
+			return (FAIL);
 		if (ft_strchr(str, ',') != NULL)
 			if (!ft_vars_color(&(vars->color), strs, line))
-				return (NULL);
-		if (!ft_line_value(&(vars->map), strs))
-			return (NULL);
+				return (FAIL);
+		if (!ft_line_value(&(vars->map), strs, line))
+			return (FAIL);
 		strs = ft_free_strs(strs);
 		line++;
 	}
-	return (OK);
+	return (SUCCESS);
 }

@@ -11,7 +11,7 @@
 
 
 
-#include	"../../includes/mlx_int.h"
+#include	"mlx_int.h"
 
 /*
 ** To handle X errors

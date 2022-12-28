@@ -16,7 +16,7 @@
 ** With mlx_int_wait_first_expose, no flush is needed.
 */
 
-#include	"../../includes/mlx_int.h"
+#include	"mlx_int.h"
 
 
 void	*mlx_new_window(t_xvar *xvar,int size_x,int size_y,char *title)

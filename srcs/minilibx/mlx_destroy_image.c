@@ -9,7 +9,7 @@
 */
 
 
-#include	"../../includes/mlx_int.h"
+#include	"mlx_int.h"
 
 
 int	mlx_destroy_image(t_xvar *xvar, t_img *img)

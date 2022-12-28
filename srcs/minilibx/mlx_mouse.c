@@ -1,4 +1,4 @@
-#include	"../../includes/mlx_int.h"
+#include "mlx_int.h"
 
 int		mlx_mouse_move(t_xvar *xvar, t_win_list *win, int x, int y)
 {

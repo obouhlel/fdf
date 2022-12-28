@@ -9,7 +9,7 @@
 */
 
 
-#include	"../../includes/mlx_int.h"
+#include	"mlx_int.h"
 
 
 int             mlx_get_color_value(t_xvar *xvar,int color)

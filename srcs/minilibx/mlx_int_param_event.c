@@ -8,7 +8,7 @@
 ** Last update Wed Oct  6 13:14:52 2004 Olivier Crouzet
 */
 
-#include	"../../includes/mlx_int.h"
+#include	"mlx_int.h"
 
 int	mlx_int_param_undef()
 {

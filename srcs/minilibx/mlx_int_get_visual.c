@@ -10,7 +10,7 @@
 
 
 
-#include	"../../includes/mlx_int.h"
+#include	"mlx_int.h"
 
 
 /*
@@ -20,8 +20,8 @@
 
 int		mlx_int_get_visual(t_xvar *xvar)
 {
-  XVisualvars	*vi;
-  XVisualvars	template;
+  XVisualInfo	*vi;
+  XVisualInfo	template;
   int		nb_item;
 
   xvar->private_cmap = 0;
@@ -30,7 +30,7 @@ int		mlx_int_get_visual(t_xvar *xvar)
     return (0);
   template.class = TrueColor;
   template.depth = xvar->depth;
-  if (!(vi = XGetVisualvars(xvar->display,VisualDepthMask|VisualClassMask,
+  if (!(vi = XGetVisualInfo(xvar->display,VisualDepthMask|VisualClassMask,
 			    &template,&nb_item)) )
     return (-1);
   xvar->visual = vi->visual;

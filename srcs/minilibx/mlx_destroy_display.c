@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
-/*   Updated: 2022/12/25 18:25:02 by obouhlel         ###   ########.fr       */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../../includes/mlx_int.h"
+#include "mlx_int.h"
 
 int	mlx_destroy_display(t_xvar *xvar)
 {

@@ -9,7 +9,7 @@
 */
 
 
-#include	"../../includes/mlx_int.h"
+#include	"mlx_int.h"
 
 
 int	mlx_int_str_str(char *str,char *find,int len)

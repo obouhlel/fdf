@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_set_font.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amalliar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 13:30:47 by amalliar          #+#    #+#             */
-/*   Updated: 2022/12/25 18:24:40 by obouhlel         ###   ########.fr       */
+/*   Updated: 2020/09/30 17:08:36 by amalliar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../../includes/mlx_int.h"
+#include "mlx_int.h"
 
 /*
 ** Allows to specify the font that will be used by mlx_string_put.

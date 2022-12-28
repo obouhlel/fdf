@@ -1,6 +1,6 @@
 
-#include	"../../includes/mlx.h"
-#include	"../../includes/mlx_int.h"
+#include	"mlx.h"
+#include	"mlx_int.h"
 
 #define	WIN1_SX		242
 #define	WIN1_SY		242

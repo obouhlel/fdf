@@ -1,4 +1,4 @@
-#include	"../../includes/mlx_int.h"
+#include	"mlx_int.h"
 
 int		mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey)
 {

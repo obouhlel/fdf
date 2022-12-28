@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 15:38:50 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:57:31 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,10 @@ void	*ft_init_vars(t_vars *vars);
 
 //parsing
 void	*ft_main_parsing(int fd, t_vars *vars);
+void	*ft_check_parsing(char *line);
 
 //trace a line
-void	ft_put_line(t_line line, t_vars vars);
+void	ft_put_line(t_line line, t_vars *vars);
 
 //window
 int		window_init(t_vars *vars);

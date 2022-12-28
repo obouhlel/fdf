@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:10:36 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 15:32:39 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:55:13 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	*ft_main_parsing(int fd, t_vars *vars)
 		str = get_next_line(fd);
 		if (!str)
 			break ;
+		if (!ft_check_parsing(str))
+			return (FAIL);
 		strs = ft_split(str, ' ');
 		if (!strs)
 			return (FAIL);

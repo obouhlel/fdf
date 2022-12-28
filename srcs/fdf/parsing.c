@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:10:36 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 15:03:34 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:32:39 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_vars_color(t_color **color, char **strs, int line)
 {
 	int		i;
-	char	*strs_color;
+	char	**strs_color;
 	t_color	*color_tmp;
 
 	i = 0;
@@ -40,7 +40,7 @@ void	*ft_vars_color(t_color **color, char **strs, int line)
 	return (SUCCESS);
 }
 
-void	*ft_line_value(t_map **map, char **strs, int id_line)
+void	*ft_vars_line(t_map **map, char **strs, int id_line)
 {
 	int		i;
 	int		col_max;
@@ -53,6 +53,7 @@ void	*ft_line_value(t_map **map, char **strs, int id_line)
 	line = (int *)malloc(sizeof(int) * col_max);
 	if (!line)
 		return (FAIL);
+	i = 0;
 	while (strs[i])
 	{
 		line[i] = atoi(strs[i]);
@@ -97,7 +98,7 @@ void	*ft_main_parsing(int fd, t_vars *vars)
 		if (ft_strchr(str, ',') != NULL)
 			if (!ft_vars_color(&(vars->color), strs, line))
 				return (FAIL);
-		if (!ft_line_value(&(vars->map), strs, line))
+		if (!ft_vars_line(&(vars->map), strs, line))
 			return (FAIL);
 		strs = ft_free_strs(strs);
 		line++;

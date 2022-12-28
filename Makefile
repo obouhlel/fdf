@@ -2,15 +2,20 @@
 
 NAME		= fdf
 
-SRCS		= srcs/fdf/main.c	srcs/fdf/parsing.c	srcs/fdf/ft_put_line.c	srcs/fdf/window.c \
-			srcs/fdf/color/ft_color_add_front.c srcs/fdf/color/ft_color_add_back srcs/fdf/color/ft_color_clear.c \
-			srcs/fdf/color/ft_color_new.c srcs/fdf/color/ft_color_last.c srcs/fdf/color/ft_color_size.c
+NAME_LIB	= libfdf.a
+
+SRCS		=  srcs/fdf/color/ft_color_add_back.c srcs/fdf/color/ft_color_add_front.c \
+			srcs/fdf/color/ft_color_clear.c srcs/fdf/color/ft_color_last.c srcs/fdf/color/ft_color_new.c \
+			srcs/fdf/color/ft_color_size.c srcs/fdf/map/ft_map_add_back.c srcs/fdf/map/ft_map_add_front.c \
+			srcs/fdf/map/ft_map_clear.c srcs/fdf/map/ft_map_last.c srcs/fdf/map/ft_map_new.c \
+			srcs/fdf/map/ft_map_size.c srcs/fdf/ft_put_line.c srcs/fdf/main.c srcs/fdf/parsing.c srcs/fdf/vars.c \
+			srcs/fdf/window.c
 
 OBJS		= $(SRCS:%.c=%.o)
 
 INCS		= includes/fdf.h includes/libft.h includes/get_next_line.h includes/mlx.h includes/mlx_int.h
 
-LIBS		= lib/libft.a lib/libgnl.a lib/libmlx.a lib/libmlx_Linux.a
+LIBS		= lib/libfdf.a lib/libft.a lib/libgnl.a lib/libmlx.a lib/libmlx_Linux.a
 
 CC			= gcc
 
@@ -33,7 +38,9 @@ ${NAME}		: ${OBJS} ${INCS}
 			@make -C srcs/minilibx
 			@mv srcs/minilibx/libmlx.a lib/
 			@mv srcs/minilibx/libmlx_Linux.a lib/
-			${CC} ${CFLAGS} ${OBJS} ${LIBS} -o ${NAME} -lXext -lX11 -lm -lz
+			${AR} ${NAME_LIB} ${OBJS}
+			@mv ${NAME_LIB} lib/
+			${CC} ${CFLAGS} ${LIBS} -o ${NAME} -lXext -lX11 -lm -lz
 
 clean		:
 			@make clean -C srcs/libft

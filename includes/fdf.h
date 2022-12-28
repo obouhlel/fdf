@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 15:02:39 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:38:50 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ typedef struct s_line
 	int	y_1;
 	int	y_2;
 }	t_line;
+
+//vars
+void	*ft_init_vars(t_vars *vars);
 
 //parsing
 void	*ft_main_parsing(int fd, t_vars *vars);

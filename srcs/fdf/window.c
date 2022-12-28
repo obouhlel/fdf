@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:11 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 13:26:30 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 22:14:46 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	close_window(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
-	free(vars->mlx);
+	ft_free_vars(vars);
 	exit(0);
 }
 

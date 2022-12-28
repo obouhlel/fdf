@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:21:57 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 21:28:51 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 22:08:18 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,32 +43,22 @@ void	*ft_check_parsing(char *line)
 {
 	const int	len = ft_strlen(line);
 	int			i;
-	int			tmp;
 
 	i = 0;
 	while (line[i])
 	{
 		if (line[i] == '-')
 			i++;
-		tmp = i;
 		while (ft_isdigit(line[i]) && line[i])
 			i++;
-		if (line[i] == 0)
-			break ;
-		if (tmp == i)
-			return (FAIL);
 		if (line[i] == ',')
 		{
 			i++;
 			if (!ft_check_parsing_color(line, &i))
 				return (FAIL);
-			if (line[i] == 0)
-				break ;
 		}
 		while (line[i] == ' ' && line[i])
 			i++;
-		if (line[i] == 0)
-			break ;
 		if (i == (len - 1) && line[i] == '\n')
 			break ;
 	}

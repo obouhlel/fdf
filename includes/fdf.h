@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 21:45:09 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 22:17:27 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,6 @@ enum e_event {
 //key
 # define ESCAPE	65307
 
-//color
-typedef struct s_color
-{
-	int				col;
-	int				line;
-	char			*hex;
-	struct s_color	*next;
-}	t_color;
-
-void	ft_color_add_back(t_color **color, t_color *new);
-void	ft_color_add_back(t_color **color, t_color *new);
-void	ft_color_clear(t_color *color);
-t_color	*ft_color_last(t_color *color);
-t_color	*ft_color_new(char *hex, int col, int line);
-int		ft_color_size(t_color *color);
-void	ft_color_print(t_color *color);
 //map
 typedef struct s_map
 {
@@ -86,6 +70,23 @@ t_map	*ft_map_last(t_map *map);
 t_map	*ft_map_new(int *line, int col_max, int id_line);
 int		ft_map_size(t_map *map);
 void	ft_map_print(t_map *map);
+
+//color
+typedef struct s_color
+{
+	int				col;
+	int				line;
+	char			*hex;
+	struct s_color	*next;
+}	t_color;
+
+void	ft_color_add_back(t_color **color, t_color *new);
+void	ft_color_add_back(t_color **color, t_color *new);
+void	ft_color_clear(t_color *color);
+t_color	*ft_color_last(t_color *color);
+t_color	*ft_color_new(char *hex, int col, int line);
+int		ft_color_size(t_color *color);
+void	ft_color_print(t_color *color);
 
 //structure mlx
 typedef struct s_vars
@@ -105,18 +106,19 @@ typedef struct s_line
 }	t_line;
 
 //vars
-t_vars	*ft_init_vars(t_vars *vars);
+t_vars	*ft_init_vars(t_vars *vars); //vars.c
+void	ft_free_vars(t_vars *vars); //vars.c
 
 //parsing
-void	*ft_main_parsing(int fd, t_vars *vars);
-void	*ft_check_parsing(char *line);
+void	*ft_main_parsing(int fd, t_vars *vars); //parsing.c
+void	*ft_check_parsing(char *line); //check_parsing.c
 
 //trace a line
-void	ft_put_line(t_line line, t_vars *vars);
+void	ft_put_line(t_line line, t_vars *vars); //put_line.c
 
 //window
-int		window_init(t_vars *vars);
-int		key_press(int keycode, t_vars *vars);
-int		close_window(t_vars *vars);
+int		window_init(t_vars *vars); //window.c
+int		key_press(int keycode, t_vars *vars); //window.c
+int		close_window(t_vars *vars); //window.c
 
 #endif

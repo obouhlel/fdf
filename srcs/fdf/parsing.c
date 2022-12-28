@@ -6,13 +6,27 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:10:36 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 21:50:58 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/28 22:19:09 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-void	*ft_vars_color(t_color **color, char **strs, int line)
+static char	**ft_free_strs(char **strs)
+{
+	int	i;
+
+	i = 0;
+	while (strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+	return (NULL);
+}
+
+static void	*ft_vars_color(t_color **color, char **strs, int line)
 {
 	int		i;
 	char	**strs_color;
@@ -27,20 +41,21 @@ void	*ft_vars_color(t_color **color, char **strs, int line)
 			if (!strs_color)
 				return (FAIL);
 			free(strs[i]);
-			strs[i] = ft_strdup(strs_color[0]);
+			strs[i] = strs_color[0];
 			if (!strs[i])
 				return (FAIL);
 			color_tmp = ft_color_new(strs_color[1], (i + 1), line);
 			if (!color_tmp)
 				return (FAIL);
 			ft_color_add_back(color, color_tmp);
+			free(strs_color);
 		}
 		i++;
 	}
 	return (SUCCESS);
 }
 
-void	*ft_vars_line(t_map **map, char **strs, int id_line)
+static void	*ft_vars_line(t_map **map, char **strs, int id_line)
 {
 	int		i;
 	int		col_max;
@@ -66,20 +81,6 @@ void	*ft_vars_line(t_map **map, char **strs, int id_line)
 	return (SUCCESS);
 }
 
-char	**ft_free_strs(char **strs)
-{
-	int	i;
-
-	i = 0;
-	while (strs[i])
-	{
-		free(strs[i]);
-		i++;
-	}
-	free(strs);
-	return (FAIL);
-}
-
 void	*ft_main_parsing(int fd, t_vars *vars)
 {
 	int		line;
@@ -93,16 +94,17 @@ void	*ft_main_parsing(int fd, t_vars *vars)
 		if (!str)
 			break ;
 		if (!ft_check_parsing(str))
-			return (FAIL);
+			return (free(str), FAIL);
 		strs = ft_split(str, ' ');
 		if (!strs)
-			return (FAIL);
+			return (free(str), FAIL);
 		if (ft_strchr(str, ',') != NULL)
 			if (!ft_vars_color(&(vars->color), strs, line))
-				return (FAIL);
+				return (free(str), ft_free_strs(strs), FAIL);
 		if (!ft_vars_line(&(vars->map), strs, line))
-			return (FAIL);
+			return (free(str), ft_free_strs(strs), FAIL);
 		strs = ft_free_strs(strs);
+		free(str);
 		line++;
 	}
 	return (SUCCESS);

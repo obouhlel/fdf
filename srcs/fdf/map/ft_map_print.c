@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 21:38:20 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 21:47:42 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/29 21:24:20 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	ft_map_print(t_map *map)
 	while (map)
 	{
 		i = 0;
-		while (i < map->col_max)
+		while (i < map->nb_col)
 		{
 			ft_putnbr_fd(map->line[i], 1);
-			ft_putchar_fd(' ', 1);
+			ft_putstr_fd("  ", 1);
 			i++;
 		}
 		ft_putchar_fd('\n', 1);

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:10:36 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 22:19:09 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/29 21:24:20 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ static void	*ft_vars_color(t_color **color, char **strs, int line)
 static void	*ft_vars_line(t_map **map, char **strs, int id_line)
 {
 	int		i;
-	int		col_max;
+	int		nb_col;
 	int		*line;
 	t_map	*map_tmp;
 
-	col_max = 0;
-	while (strs[col_max])
-		col_max++;
-	line = (int *)malloc(sizeof(int) * col_max);
+	nb_col = 0;
+	while (strs[nb_col])
+		nb_col++;
+	line = (int *)malloc(sizeof(int) * nb_col);
 	if (!line)
 		return (FAIL);
 	i = 0;
@@ -74,7 +74,7 @@ static void	*ft_vars_line(t_map **map, char **strs, int id_line)
 		line[i] = atoi(strs[i]);
 		i++;
 	}
-	map_tmp = ft_map_new(line, col_max, id_line);
+	map_tmp = ft_map_new(line, nb_col, id_line);
 	if (!map_tmp)
 		return (FAIL);
 	ft_map_add_back(map, map_tmp);

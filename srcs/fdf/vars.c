@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 12:12:37 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 22:14:30 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/29 21:23:47 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_vars	*ft_init_vars(t_vars *vars)
 	vars->mlx = NULL;
 	vars->win = NULL;
 	vars->map = NULL;
+	vars->nb_line = 0;
 	vars->color = NULL;
 	return (vars);
 }

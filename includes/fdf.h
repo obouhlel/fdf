@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 22:17:27 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/29 21:24:25 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define FAIL		(void *)0
 
 //window size
-# define WIN_X 500
-# define WIN_Y 500
+# define WIN_X 1200
+# define WIN_Y 700
 
 //event define
 enum e_event {
@@ -56,7 +56,7 @@ enum e_event {
 //map
 typedef struct s_map
 {
-	int				col_max;
+	int				nb_col;
 	int				id_line;
 	int				*line;
 	struct s_map	*previous_line;
@@ -67,7 +67,7 @@ void	ft_map_add_back(t_map **map, t_map *new);
 void	ft_map_add_back(t_map **map, t_map *new);
 void	ft_map_clear(t_map *map);
 t_map	*ft_map_last(t_map *map);
-t_map	*ft_map_new(int *line, int col_max, int id_line);
+t_map	*ft_map_new(int *line, int nb_col, int id_line);
 int		ft_map_size(t_map *map);
 void	ft_map_print(t_map *map);
 
@@ -94,16 +94,28 @@ typedef struct s_vars
 	void		*mlx;
 	void		*win;
 	t_map		*map;
+	int			nb_line;
 	t_color		*color;
 }	t_vars;
 
-typedef struct s_line
+enum e_plan_2d
 {
-	int	x_1;
-	int	x_2;
-	int	y_1;
-	int	y_2;
-}	t_line;
+	COLONE,
+	LINE,
+};
+
+typedef struct s_plan_2d
+{
+	int	x;
+	int	y;
+}	t_plan_2d;
+
+typedef struct s_plan_3d
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_plan_3d;
 
 //vars
 t_vars	*ft_init_vars(t_vars *vars); //vars.c
@@ -113,12 +125,12 @@ void	ft_free_vars(t_vars *vars); //vars.c
 void	*ft_main_parsing(int fd, t_vars *vars); //parsing.c
 void	*ft_check_parsing(char *line); //check_parsing.c
 
-//trace a line
-void	ft_put_line(t_line line, t_vars *vars); //put_line.c
-
 //window
 int		window_init(t_vars *vars); //window.c
 int		key_press(int keycode, t_vars *vars); //window.c
 int		close_window(t_vars *vars); //window.c
+
+//trace
+void	ft_trace_grid(t_vars *vars);
 
 #endif

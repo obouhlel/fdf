@@ -6,13 +6,13 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:52:14 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 15:03:34 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/29 21:24:20 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-t_map	*ft_map_new(int *line, int col_max, int id_line)
+t_map	*ft_map_new(int *line, int nb_col, int id_line)
 {
 	t_map	*new;
 
@@ -20,7 +20,7 @@ t_map	*ft_map_new(int *line, int col_max, int id_line)
 	new = (t_map *)malloc(sizeof(t_map));
 	if (!new)
 		return (FAIL);
-	new->col_max = col_max;
+	new->nb_col = nb_col;
 	new->id_line = id_line;
 	new->line = line;
 	new->next_line = NULL;

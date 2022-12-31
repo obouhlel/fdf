@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 21:38:20 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/29 21:24:20 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/31 15:20:45 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void	ft_map_print(t_map *map)
 			ft_putstr_fd("  ", 1);
 			i++;
 		}
+		ft_putstr_fd("\tLINE ID = ", 1);
+		ft_putnbr_fd(map->id_line, 1);
+		ft_putstr_fd("  NB LINE = ", 1);
+		ft_putnbr_fd(map->nb_line, 1);
+		ft_putstr_fd("  NB COL = ", 1);
+		ft_putnbr_fd(map->nb_col, 1);
 		ft_putchar_fd('\n', 1);
 		map = map->next_line;
 	}

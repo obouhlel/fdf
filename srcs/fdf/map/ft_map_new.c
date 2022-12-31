@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:52:14 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/29 21:24:20 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/31 14:58:04 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_map	*ft_map_new(int *line, int nb_col, int id_line)
 	if (!new)
 		return (FAIL);
 	new->nb_col = nb_col;
+	new->nb_line = -1;
 	new->id_line = id_line;
 	new->line = line;
 	new->next_line = NULL;

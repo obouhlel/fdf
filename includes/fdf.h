@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/29 21:24:25 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/31 18:42:54 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ enum e_event {
 typedef struct s_map
 {
 	int				nb_col;
+	int				nb_line;
 	int				id_line;
 	int				*line;
 	struct s_map	*previous_line;
@@ -69,6 +70,7 @@ void	ft_map_clear(t_map *map);
 t_map	*ft_map_last(t_map *map);
 t_map	*ft_map_new(int *line, int nb_col, int id_line);
 int		ft_map_size(t_map *map);
+void	ft_map_init_nb_line(t_map *map);
 void	ft_map_print(t_map *map);
 
 //color
@@ -94,20 +96,39 @@ typedef struct s_vars
 	void		*mlx;
 	void		*win;
 	t_map		*map;
-	int			nb_line;
 	t_color		*color;
 }	t_vars;
 
 enum e_plan_2d
 {
-	COLONE,
+	COLUMN,
 	LINE,
 };
 
+# define X 0
+# define Y 1
+
+typedef struct s_line
+{
+	int	a[2];
+	int	b[2];
+}	t_line;
+
+/*
+	plan 2D
+
+	A --- C
+	|     |
+	|     |
+	B --- D
+*/
+
 typedef struct s_plan_2d
 {
-	int	x;
-	int	y;
+	int	a[2];
+	int	b[2];
+	int	c[2];
+	int	d[2];
 }	t_plan_2d;
 
 typedef struct s_plan_3d

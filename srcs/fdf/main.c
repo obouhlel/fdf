@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 18:43:31 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/29 21:23:47 by obouhlel         ###   ########.fr       */
+/*   Updated: 2022/12/31 15:49:22 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	main_fdf(t_vars *vars, char *name_file)
 		return (0);
 	}
 	close(fd);
-	vars->nb_line = ft_map_size(vars->map);
+	ft_map_init_nb_line(vars->map);
 	ft_map_print(vars->map);
 	ft_color_print(vars->color);
 	window_init(vars);

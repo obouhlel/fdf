@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/31 18:42:54 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/01 14:28:14 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@
 # include <errno.h>
 # include <math.h>
 
+//======================RETURN=========================//
 # define SUCCESS	(void *)1
 # define FAIL		(void *)0
 
-//window size
+//=====================WINDOW SIZE=====================//
 # define WIN_X 1200
 # define WIN_Y 700
 
-//event define
+//========================EVENT========================//
 enum e_event {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
@@ -46,58 +47,22 @@ enum e_event {
 	ON_DESTROY = 17
 };
 
+//========================MASK=========================//
 # define NOEVENTMASK	0b0
 # define KEYPRESSMASK	0b1
 # define KEYRELEASEMASK	0b10
 
-//key
+//========================KEY==========================//
 # define ESCAPE	65307
 
-//map
-typedef struct s_map
-{
-	int				nb_col;
-	int				nb_line;
-	int				id_line;
-	int				*line;
-	struct s_map	*previous_line;
-	struct s_map	*next_line;
-}	t_map;
+//========================PLAN=========================//
 
-void	ft_map_add_back(t_map **map, t_map *new);
-void	ft_map_add_back(t_map **map, t_map *new);
-void	ft_map_clear(t_map *map);
-t_map	*ft_map_last(t_map *map);
-t_map	*ft_map_new(int *line, int nb_col, int id_line);
-int		ft_map_size(t_map *map);
-void	ft_map_init_nb_line(t_map *map);
-void	ft_map_print(t_map *map);
-
-//color
-typedef struct s_color
-{
-	int				col;
-	int				line;
-	char			*hex;
-	struct s_color	*next;
-}	t_color;
-
-void	ft_color_add_back(t_color **color, t_color *new);
-void	ft_color_add_back(t_color **color, t_color *new);
-void	ft_color_clear(t_color *color);
-t_color	*ft_color_last(t_color *color);
-t_color	*ft_color_new(char *hex, int col, int line);
-int		ft_color_size(t_color *color);
-void	ft_color_print(t_color *color);
-
-//structure mlx
-typedef struct s_vars
-{
-	void		*mlx;
-	void		*win;
-	t_map		*map;
-	t_color		*color;
-}	t_vars;
+/*
+	For the function ft_trace_grid
+	I need to calculate the line with
+	the type of line, if it's column
+	or line.
+*/
 
 enum e_plan_2d
 {
@@ -105,8 +70,26 @@ enum e_plan_2d
 	LINE,
 };
 
-# define X 0
-# define Y 1
+/*
+	index for tab, when I need 0 1 2,
+	0 it's X
+	1 it's Y
+	2 it's Z
+*/
+
+enum e_point
+{
+	X,
+	Y,
+	Z,
+};
+
+/*
+	line
+
+	A --- B
+
+*/
 
 typedef struct s_line
 {
@@ -131,27 +114,86 @@ typedef struct s_plan_2d
 	int	d[2];
 }	t_plan_2d;
 
-typedef struct s_plan_3d
+/*
+	MATRICE 3 * 1
+	X (i of line)
+	Y (id_line)
+	Z (line[i])
+*/
+
+typedef struct s_matrice_3_1
 {
 	int	x;
 	int	y;
 	int	z;
-}	t_plan_3d;
+}	t_matrice_3_1;
 
-//vars
-t_vars	*ft_init_vars(t_vars *vars); //vars.c
-void	ft_free_vars(t_vars *vars); //vars.c
+//========================MAP============================//
+typedef struct s_map
+{
+	int				nb_col;
+	int				nb_line;
+	int				id_line;
+	int				*line;
+	struct s_map	*previous_line;
+	struct s_map	*next_line;
+}	t_map;
 
-//parsing
-void	*ft_main_parsing(int fd, t_vars *vars); //parsing.c
-void	*ft_check_parsing(char *line); //check_parsing.c
+//folder fdf/map
+void	ft_map_add_back(t_map **map, t_map *new);
+void	ft_map_add_back(t_map **map, t_map *new);
+void	ft_map_clear(t_map *map);
+t_map	*ft_map_last(t_map *map);
+t_map	*ft_map_new(int *line, int nb_col, int id_line);
+int		ft_map_size(t_map *map);
+void	ft_map_init_nb_line(t_map *map);
+void	ft_map_print(t_map *map);
 
-//window
-int		window_init(t_vars *vars); //window.c
-int		key_press(int keycode, t_vars *vars); //window.c
-int		close_window(t_vars *vars); //window.c
+//========================COLOR==========================//
+typedef struct s_color
+{
+	int				col;
+	int				line;
+	char			*hex;
+	struct s_color	*next;
+}	t_color;
 
-//trace
+//folder fdf/color
+void	ft_color_add_back(t_color **color, t_color *new);
+void	ft_color_add_back(t_color **color, t_color *new);
+void	ft_color_clear(t_color *color);
+t_color	*ft_color_last(t_color *color);
+t_color	*ft_color_new(char *hex, int col, int line);
+int		ft_color_size(t_color *color);
+void	ft_color_print(t_color *color);
+
+//========================VARS============================//
+typedef struct s_vars
+{
+	void		*mlx;
+	void		*win;
+	t_map		*map;
+	t_color		*color;
+}	t_vars;
+
+//file vars.c
+t_vars	*ft_init_vars(t_vars *vars);
+void	ft_free_vars(t_vars *vars);
+
+//======================PARSING============================//
+//file parsing.c
+void	*ft_main_parsing(int fd, t_vars *vars);
+//check_parsing.c
+void	*ft_check_parsing(char *line);
+
+//=======================WINDOW============================//
+//file Window.c
+int		window_init(t_vars *vars);
+int		key_press(int keycode, t_vars *vars);
+int		close_window(t_vars *vars);
+
+//========================TRACE============================//
+//file grid.c
 void	ft_trace_grid(t_vars *vars);
 
 #endif

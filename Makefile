@@ -8,7 +8,7 @@ SRCS		=  srcs/fdf/color/ft_color_add_back.c srcs/fdf/color/ft_color_add_front.c 
 			srcs/fdf/color/ft_color_clear.c srcs/fdf/color/ft_color_last.c srcs/fdf/color/ft_color_new.c \
 			srcs/fdf/color/ft_color_size.c srcs/fdf/map/ft_map_add_back.c srcs/fdf/map/ft_map_add_front.c \
 			srcs/fdf/map/ft_map_clear.c srcs/fdf/map/ft_map_last.c srcs/fdf/map/ft_map_new.c \
-			srcs/fdf/map/ft_map_size.c srcs/fdf/map/ft_map_init_nb_line.c \
+			srcs/fdf/map/ft_map_size.c srcs/fdf/map/ft_map_init_nb_line.c srcs/fdf/map/ft_map_matrice.c\
 			srcs/fdf/main.c srcs/fdf/parsing.c srcs/fdf/check_parsing.c srcs/fdf/vars.c \
 			srcs/fdf/window.c srcs/fdf/color/ft_color_print.c srcs/fdf/map/ft_map_print.c \
 			srcs/fdf/grid.c

@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_clear.c                                     :+:      :+:    :+:   */
+/*   ft_putstrnbrendl_fd.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 11:11:26 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/02 12:13:26 by obouhlel         ###   ########.fr       */
+/*   Created: 2023/01/02 12:01:40 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/02 12:03:33 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/fdf.h"
+#include "../../../includes/libft.h"
 
-static void	ft_matrice_clear(t_matrice_3D *matrice)
+void	ft_putstrnbr_fd(char *s, int n, int fd)
 {
-	t_matrice_3D	*tmp;
-
-	tmp = NULL;
-	while (matrice)
-	{
-		tmp = matrice->next;
-		free(matrice);
-		matrice = tmp;
-	}
-}
-
-void	ft_map_clear(t_map *map)
-{
-	t_map	*tmp;
-
-	tmp = NULL;
-	while (map)
-	{
-		tmp = map->next_line;
-		free(map->line);
-		ft_matrice_clear(map->matrice);
-		free(map);
-		map = tmp;
-	}
+	ft_putstr_fd(s, fd);
+	ft_putnbr_fd(n, fd);
+	ft_putchar_fd('\n', fd);
 }

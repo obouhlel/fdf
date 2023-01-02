@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/01 14:28:14 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:20:37 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,14 +119,16 @@ typedef struct s_plan_2d
 	X (i of line)
 	Y (id_line)
 	Z (line[i])
+	the next col
 */
 
-typedef struct s_matrice_3_1
+typedef struct s_matrice_3D
 {
-	int	x;
-	int	y;
-	int	z;
-}	t_matrice_3_1;
+	int					x;
+	int					y;
+	int					z;
+	struct s_matrice_3D	*next;
+}	t_matrice_3D;
 
 //========================MAP============================//
 typedef struct s_map
@@ -135,19 +137,21 @@ typedef struct s_map
 	int				nb_line;
 	int				id_line;
 	int				*line;
+	t_matrice_3D	*matrice;
 	struct s_map	*previous_line;
 	struct s_map	*next_line;
 }	t_map;
 
 //folder fdf/map
-void	ft_map_add_back(t_map **map, t_map *new);
-void	ft_map_add_back(t_map **map, t_map *new);
-void	ft_map_clear(t_map *map);
-t_map	*ft_map_last(t_map *map);
-t_map	*ft_map_new(int *line, int nb_col, int id_line);
-int		ft_map_size(t_map *map);
-void	ft_map_init_nb_line(t_map *map);
-void	ft_map_print(t_map *map);
+void			ft_map_add_back(t_map **map, t_map *new);
+void			ft_map_add_back(t_map **map, t_map *new);
+void			ft_map_clear(t_map *map);
+t_map			*ft_map_last(t_map *map);
+t_map			*ft_map_new(int *line, int nb_col, int id_line);
+int				ft_map_size(t_map *map);
+void			ft_map_init_nb_line(t_map *map);
+void			ft_map_print(t_map *map);
+t_matrice_3D	*ft_map_matrice(int *line, int nb_col, int id_line);
 
 //========================COLOR==========================//
 typedef struct s_color
@@ -159,13 +163,13 @@ typedef struct s_color
 }	t_color;
 
 //folder fdf/color
-void	ft_color_add_back(t_color **color, t_color *new);
-void	ft_color_add_back(t_color **color, t_color *new);
-void	ft_color_clear(t_color *color);
-t_color	*ft_color_last(t_color *color);
-t_color	*ft_color_new(char *hex, int col, int line);
-int		ft_color_size(t_color *color);
-void	ft_color_print(t_color *color);
+void			ft_color_add_back(t_color **color, t_color *new);
+void			ft_color_add_back(t_color **color, t_color *new);
+void			ft_color_clear(t_color *color);
+t_color			*ft_color_last(t_color *color);
+t_color			*ft_color_new(char *hex, int col, int line);
+int				ft_color_size(t_color *color);
+void			ft_color_print(t_color *color);
 
 //========================VARS============================//
 typedef struct s_vars
@@ -177,23 +181,23 @@ typedef struct s_vars
 }	t_vars;
 
 //file vars.c
-t_vars	*ft_init_vars(t_vars *vars);
-void	ft_free_vars(t_vars *vars);
+t_vars			*ft_init_vars(t_vars *vars);
+void			ft_free_vars(t_vars *vars);
 
 //======================PARSING============================//
 //file parsing.c
-void	*ft_main_parsing(int fd, t_vars *vars);
+void			*ft_main_parsing(int fd, t_vars *vars);
 //check_parsing.c
-void	*ft_check_parsing(char *line);
+void			*ft_check_parsing(char *line);
 
 //=======================WINDOW============================//
 //file Window.c
-int		window_init(t_vars *vars);
-int		key_press(int keycode, t_vars *vars);
-int		close_window(t_vars *vars);
+int				window_init(t_vars *vars);
+int				key_press(int keycode, t_vars *vars);
+int				close_window(t_vars *vars);
 
 //========================TRACE============================//
 //file grid.c
-void	ft_trace_grid(t_vars *vars);
+void			ft_trace_grid(t_vars *vars);
 
 #endif

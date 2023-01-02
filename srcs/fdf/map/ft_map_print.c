@@ -6,11 +6,30 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 21:38:20 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/31 15:20:45 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/02 12:18:54 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
+
+static void	ft_matrice_print(t_map *map)
+{
+	t_matrice_3D	*tmp;
+
+	tmp = NULL;
+	while (map)
+	{
+		tmp = map->matrice;
+		while (tmp)
+		{
+			ft_putstrnbr_fd("x = ", tmp->x, 1);
+			ft_putstrnbr_fd("y = ", tmp->y, 1);
+			ft_putstrnbr_fd("z = ", tmp->z, 1);
+			tmp = tmp->next;
+		}
+		map = map->next_line;
+	}
+}
 
 void	ft_map_print(t_map *map)
 {
@@ -18,6 +37,7 @@ void	ft_map_print(t_map *map)
 
 	if (!map)
 		ft_putendl_fd("(null)", 1);
+	ft_matrice_print(map);
 	while (map)
 	{
 		i = 0;

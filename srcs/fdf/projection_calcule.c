@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 10:02:09 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/03 17:42:38 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:39:15 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static t_matrice_2D	*ft_new_matrice_2d(int x, int y)
 	mat_2d = (t_matrice_2D *)malloc(sizeof(t_matrice_2D));
 	if (!mat_2d)
 		return (FAIL);
+	mat_2d->point[X] = 0;
+	mat_2d->point[Y] = 0;
 	mat_2d->x = x;
 	mat_2d->y = y;
 	mat_2d->next = NULL;

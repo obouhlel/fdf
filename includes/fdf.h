@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/03 15:41:11 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:12:52 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ typedef struct s_matrice_3D
 
 typedef struct s_matrice_2D
 {
+	int					point[2];
 	double				x;
 	double				y;
 	struct s_matrice_2D	*next;

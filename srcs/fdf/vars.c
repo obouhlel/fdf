@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 12:12:37 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/31 14:57:10 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/03 12:07:25 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_vars	*ft_init_vars(t_vars *vars)
 	vars->win = NULL;
 	vars->map = NULL;
 	vars->color = NULL;
+	vars->mat_2d = NULL;
 	return (vars);
 }
 
@@ -30,6 +31,8 @@ void	ft_free_vars(t_vars *vars)
 		ft_map_clear(vars->map);
 	if (vars->color)
 		ft_color_clear(vars->color);
+	if (vars->mat_2d)
+		ft_mat_2d_clear(vars->mat_2d);
 	if (vars->mlx)
 		free(vars->mlx);
 	free(vars);

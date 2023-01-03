@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:38:16 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/02 12:07:19 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/03 10:15:16 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,19 @@ static void	ft_matrice_add_back(t_matrice_3D **matrice, t_matrice_3D *new)
 
 t_matrice_3D	*ft_map_matrice(int *line, int nb_col, int id_line)
 {
-	t_matrice_3D	*matrice;
+	t_matrice_3D	*mat_3d;
 	t_matrice_3D	*tmp;
 	int				i;
 
-	matrice = NULL;
+	mat_3d = NULL;
 	i = 0;
 	while (i < nb_col)
 	{
-		tmp = ft_new_matrice(i, id_line, line[i]);
+		tmp = ft_new_matrice((i + 1), id_line, line[i]);
 		if (!tmp)
 			return (NULL);
-		ft_matrice_add_back(&matrice, tmp);
+		ft_matrice_add_back(&mat_3d, tmp);
 		i++;
 	}
-	return (matrice);
+	return (mat_3d);
 }

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_new.c                                       :+:      :+:    :+:   */
+/*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 10:52:14 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/03 10:14:49 by obouhlel         ###   ########.fr       */
+/*   Created: 2023/01/03 11:57:06 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/03 14:06:45 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/fdf.h"
+#include "../../includes/fdf.h"
 
-t_map	*ft_map_new(int *line, int nb_col, int id_line)
+void	*ft_main_projection(t_vars *vars)
 {
-	t_map	*new;
+	double	**mp;
+	double	x;
+	double	y;
 
-	new = NULL;
-	new = (t_map *)malloc(sizeof(t_map));
-	if (!new)
+	x = 0;
+	y = 0;
+	mp = ft_matrice_projection();
+	if (!mp)
 		return (FAIL);
-	new->nb_col = nb_col;
-	new->nb_line = -1;
-	new->id_line = id_line;
-	new->line = line;
-	new->mat_3d = ft_map_matrice(line, nb_col, id_line);
-	if (!new->mat_3d)
-		return (FAIL);
-	new->next_line = NULL;
-	new->previous_line = NULL;
-	return (new);
+	vars->mat_2d = ft_calcule_projection(vars->map, mp, x, y);
+	if (!vars->mat_2d)
+		return (ft_mp_clear(mp), FAIL);
+	ft_mp_clear(mp);
+	return (SUCCESS);
 }

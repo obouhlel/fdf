@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 21:38:20 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/02 12:18:54 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/03 10:14:31 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_matrice_print(t_map *map)
 	tmp = NULL;
 	while (map)
 	{
-		tmp = map->matrice;
+		tmp = map->mat_3d;
 		while (tmp)
 		{
 			ft_putstrnbr_fd("x = ", tmp->x, 1);

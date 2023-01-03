@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/02 12:20:37 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:41:11 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,12 @@ enum e_point
 	line
 
 	A --- B
-
 */
 
 typedef struct s_line
 {
-	int	a[2];
-	int	b[2];
+	double	a[2];
+	double	b[2];
 }	t_line;
 
 /*
@@ -116,7 +115,7 @@ typedef struct s_plan_2d
 
 /*
 	MATRICE 3 * 1
-	X (i of line)
+	X (i + 1 of line)
 	Y (id_line)
 	Z (line[i])
 	the next col
@@ -130,6 +129,13 @@ typedef struct s_matrice_3D
 	struct s_matrice_3D	*next;
 }	t_matrice_3D;
 
+typedef struct s_matrice_2D
+{
+	double				x;
+	double				y;
+	struct s_matrice_2D	*next;
+}	t_matrice_2D;
+
 //========================MAP============================//
 typedef struct s_map
 {
@@ -137,7 +143,7 @@ typedef struct s_map
 	int				nb_line;
 	int				id_line;
 	int				*line;
-	t_matrice_3D	*matrice;
+	t_matrice_3D	*mat_3d;
 	struct s_map	*previous_line;
 	struct s_map	*next_line;
 }	t_map;
@@ -174,10 +180,11 @@ void			ft_color_print(t_color *color);
 //========================VARS============================//
 typedef struct s_vars
 {
-	void		*mlx;
-	void		*win;
-	t_map		*map;
-	t_color		*color;
+	void			*mlx;
+	void			*win;
+	t_map			*map;
+	t_matrice_2D	*mat_2d;
+	t_color			*color;
 }	t_vars;
 
 //file vars.c
@@ -199,5 +206,14 @@ int				close_window(t_vars *vars);
 //========================TRACE============================//
 //file grid.c
 void			ft_trace_grid(t_vars *vars);
+//file projection.c
+void			ft_mat_2d_clear(t_matrice_2D *mat_2d);
+void			*ft_main_projection(t_vars *vars);
+//file projection_calcule.c
+t_matrice_2D	*ft_calcule_projection(t_map *map, double **mp, \
+double x, double y);
+//file matrice_projection.c
+double			**ft_matrice_projection(void);
+void			ft_mp_clear(double **mp);
 
 #endif

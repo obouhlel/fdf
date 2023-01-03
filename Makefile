@@ -11,7 +11,8 @@ SRCS		=  srcs/fdf/color/ft_color_add_back.c srcs/fdf/color/ft_color_add_front.c 
 			srcs/fdf/map/ft_map_size.c srcs/fdf/map/ft_map_init_nb_line.c srcs/fdf/map/ft_map_matrice.c\
 			srcs/fdf/main.c srcs/fdf/parsing.c srcs/fdf/check_parsing.c srcs/fdf/vars.c \
 			srcs/fdf/window.c srcs/fdf/color/ft_color_print.c srcs/fdf/map/ft_map_print.c \
-			srcs/fdf/grid.c
+			srcs/fdf/grid.c srcs/fdf/projection_calcule.c srcs/fdf/matrice_projection.c \
+			srcs/fdf/projection.c
 
 OBJS		= $(SRCS:%.c=%.o)
 

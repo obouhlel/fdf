@@ -6,11 +6,26 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 18:43:31 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/31 15:49:22 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:44:00 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
+
+static int	main_fdf_2(t_vars *vars)
+{
+	ft_map_init_nb_line(vars->map);
+	if (!ft_main_projection(vars))
+	{
+		ft_putendl_fd("Error", 1);
+		ft_free_vars(vars);
+		return (0);
+	}
+	ft_map_print(vars->map);
+	ft_color_print(vars->color);
+	window_init(vars);
+	ft_free_vars(vars);
+}
 
 static int	main_fdf(t_vars *vars, char *name_file)
 {
@@ -31,11 +46,7 @@ static int	main_fdf(t_vars *vars, char *name_file)
 		return (0);
 	}
 	close(fd);
-	ft_map_init_nb_line(vars->map);
-	ft_map_print(vars->map);
-	ft_color_print(vars->color);
-	window_init(vars);
-	ft_free_vars(vars);
+	ft_main_fdf_2(vars);
 	return (1);
 }
 

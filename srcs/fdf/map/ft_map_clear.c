@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:11:26 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/02 12:13:26 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/03 10:16:46 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_map_clear(t_map *map)
 	{
 		tmp = map->next_line;
 		free(map->line);
-		ft_matrice_clear(map->matrice);
+		ft_matrice_clear(map->mat_3d);
 		free(map);
 		map = tmp;
 	}

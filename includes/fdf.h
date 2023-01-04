@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/04 14:54:12 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/04 15:02:43 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@
 # include <math.h>
 
 //======================RETURN=========================//
-# define SUCCESS	(void *)1
-# define FAIL		(void *)0
+# define SUCCESS		(void *)1
+# define FAIL			(void *)0
+# define EXIT_SUCCESS	1
+# define EXIT_FAILURE	0
 
 //=====================WINDOW SIZE=====================//
 # define WIN_X 1200
@@ -218,6 +220,5 @@ double			**ft_matrice_projection(void);
 void			ft_mp_clear(double **mp);
 //file find.c
 void			ft_id_mat_2d(t_map *map, t_matrice_2D *mat_2d);
-void			ft_print_id_mat_2d(t_matrice_2D *mat_2D);
 
 #endif

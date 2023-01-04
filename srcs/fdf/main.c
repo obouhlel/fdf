@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 18:43:31 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/04 14:57:31 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/04 15:02:23 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static int	main_fdf_2(t_vars *vars)
 	{
 		ft_putendl_fd("Error", 1);
 		ft_free_vars(vars);
-		return (0);
+		return (EXIT_FAILURE);
 	}
 	ft_id_mat_2d(vars->map, vars->mat_2d);
-	// ft_map_print(vars->map);
-	// ft_color_print(vars->color);
+	ft_map_print(vars->map);
+	ft_color_print(vars->color);
 	window_init(vars);
 	ft_free_vars(vars);
-	return (1);
+	return (EXIT_SUCCESS);
 }
 
 static int	main_fdf(t_vars *vars, char *name_file)
@@ -38,19 +38,19 @@ static int	main_fdf(t_vars *vars, char *name_file)
 	{
 		ft_putendl_fd("Error", 1);
 		ft_free_vars(vars);
-		return (0);
+		return (EXIT_FAILURE);
 	}
 	if (!ft_main_parsing(fd, vars))
 	{
 		ft_putendl_fd("Error", 1);
 		ft_free_vars(vars);
 		close(fd);
-		return (0);
+		return (EXIT_FAILURE);
 	}
 	close(fd);
 	if (!main_fdf_2(vars))
-		return (0);
-	return (1);
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 int	main(int ac, char **av)
@@ -62,15 +62,15 @@ int	main(int ac, char **av)
 	if (!vars)
 	{
 		ft_putendl_fd("Error", 1);
-		return (0);
+		return (EXIT_FAILURE);
 	}
 	if (ac != 2)
 	{
 		ft_putendl_fd("Error", 1);
 		ft_free_vars(vars);
-		return (0);
+		return (EXIT_FAILURE);
 	}
 	if (!main_fdf(vars, av[1]))
-		return (0);
-	return (0);
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }

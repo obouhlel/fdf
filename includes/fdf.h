@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/03 18:12:52 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:54:12 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,5 +216,8 @@ double x, double y);
 //file matrice_projection.c
 double			**ft_matrice_projection(void);
 void			ft_mp_clear(double **mp);
+//file find.c
+void			ft_id_mat_2d(t_map *map, t_matrice_2D *mat_2d);
+void			ft_print_id_mat_2d(t_matrice_2D *mat_2D);
 
 #endif

@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projection.c                                       :+:      :+:    :+:   */
+/*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 11:57:06 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/04 14:49:08 by obouhlel         ###   ########.fr       */
+/*   Created: 2023/01/04 11:16:41 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/04 14:54:59 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-void	*ft_main_projection(t_vars *vars)
+void	ft_id_mat_2d(t_map *map, t_matrice_2D *mat_2d)
 {
-	double	**mp;
-	double	x;
-	double	y;
+	t_matrice_3D	*tmp;
+	int				x;
+	int				y;
 
-	x = 0;
-	y = 0;
-	mp = ft_matrice_projection();
-	if (!mp)
-		return (FAIL);
-	vars->mat_2d = ft_calcule_projection(vars->map, mp, x, y);
-	if (!vars->mat_2d)
-		return (ft_mp_clear(mp), FAIL);
-	ft_mp_clear(mp);
-	return (SUCCESS);
+	tmp = NULL;
+	y = 1;
+	while (map)
+	{
+		tmp = map->mat_3d;
+		x = 1;
+		while (tmp)
+		{
+			mat_2d->point[X] = x;
+			mat_2d->point[Y] = y;
+			x++;
+			mat_2d = mat_2d->next;
+			tmp = tmp->next;
+		}
+		y++;
+		map = map->next_line;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/04 15:02:43 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/04 15:03:51 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@
 //======================RETURN=========================//
 # define SUCCESS		(void *)1
 # define FAIL			(void *)0
-# define EXIT_SUCCESS	1
-# define EXIT_FAILURE	0
 
 //=====================WINDOW SIZE=====================//
 # define WIN_X 1200

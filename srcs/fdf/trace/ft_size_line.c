@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projection.c                                       :+:      :+:    :+:   */
+/*   ft_size_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 11:57:06 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 13:59:27 by obouhlel         ###   ########.fr       */
+/*   Created: 2023/01/05 12:55:17 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/05 14:00:19 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-void	*ft_main_projection(t_vars *vars)
+void	ft_size_line(double offset, t_matrice_2D *mat_2d)
 {
-	double	**mp;
-	double	x;
-	double	y;
-
-	x = 0;
-	y = 0;
-	mp = ft_matrice_projection();
-	if (!mp)
-		return (FAIL);
-	vars->mat_2d = ft_calcule_projection(vars->map, mp, x, y);
-	if (!vars->mat_2d)
-		return (ft_mp_clear(mp), FAIL);
-	ft_mp_clear(mp);
-	ft_id_mat_2d(vars->map, vars->mat_2d);
-	return (SUCCESS);
+	while (mat_2d)
+	{
+		mat_2d->x *= offset;
+		mat_2d->y *= offset;
+		mat_2d = mat_2d->next;
+	}
 }

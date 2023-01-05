@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:22:38 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 12:24:17 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/05 13:59:41 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	ft_put_line(t_vars *vars, t_line line)
 {
-	int	x;
-	int	y;
+	const double	off_x = ((WIN_X - 1) / 2);
+	const double	off_y = ((WIN_Y - 1) / 5);
+	double			x;
+	double			y;
 
 	x = line.a[X];
 	y = line.a[Y];
@@ -25,7 +27,7 @@ void	ft_put_line(t_vars *vars, t_line line)
 		{
 			y = line.a[Y] + (line.b[Y] - line.a[Y]) * \
 			(x - line.a[X]) / (line.b[X] - line.a[X]);
-			mlx_pixel_put(vars->mlx, vars->win, x, y, 0xFFFFFF);
+			mlx_pixel_put(vars->mlx, vars->win, off_x + x, off_y + y, 0xFFFFFF);
 			x++;
 		}
 	}
@@ -35,7 +37,7 @@ void	ft_put_line(t_vars *vars, t_line line)
 		{
 			x = line.a[X] + (line.b[X] - line.a[X]) * \
 			(y - line.a[Y]) / (line.b[Y] - line.a[Y]);
-			mlx_pixel_put(vars->mlx, vars->win, x, y, 0xFFFFFF);
+			mlx_pixel_put(vars->mlx, vars->win, off_x + x, off_y + y, 0xFFFFFF);
 			y++;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 12:25:19 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:02:43 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,8 +229,9 @@ double			**ft_matrice_projection(void);
 void			ft_mp_clear(double **mp);
 
 //========================TRACE============================//
-//file trace.c
 void			ft_put_line(t_vars *vars, t_line line);
+void			ft_size_line(double offset, t_matrice_2D *mat_2d);
+//file trace.c
 void			ft_trace(t_vars *vars);
 //file find.c
 void			ft_id_mat_2d(t_map *map, t_matrice_2D *mat_2d);

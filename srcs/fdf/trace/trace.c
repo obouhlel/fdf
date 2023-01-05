@@ -6,111 +6,65 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:21:01 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 12:24:05 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:02:07 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-/*
-	plan 2D
-
-	A --- C
-	|     |
-	|     |
-	B --- D
-
-	point A	(MIN, MIN)
-	point B	(MIN, MAX)
-	point C	(MAX, MIN)
-	point D	(MAX, MAX)
-
-	MAX = (WIN_Y - 1) - ((WIN_Y - 1) / N)
-	MIN = ((WIN_Y - 1) / N)
-*/
-
-// void	ft_init_plan(t_plan_2d *plan, t_vars *vars)
-// {
-// 	plan->a[X] = ((WIN_X - 1) / vars->map->nb_col);
-// 	plan->a[Y] = ((WIN_Y - 1) / vars->map->nb_line);
-// 	plan->b[X] = ((WIN_X - 1) / vars->map->nb_col);
-// 	plan->b[Y] = (WIN_Y - 1) - ((WIN_Y - 1) / vars->map->nb_line);
-// 	plan->c[X] = (WIN_X - 1) - ((WIN_X - 1) / vars->map->nb_col);
-// 	plan->c[Y] = ((WIN_Y - 1) / vars->map->nb_line);
-// 	plan->d[X] = (WIN_X - 1) - ((WIN_X - 1) / vars->map->nb_col);
-// 	plan->d[Y] = (WIN_Y - 1) - ((WIN_Y - 1) / vars->map->nb_line);
-// }
-
-// void	ft_calculate_line(t_line *line, t_plan_2d plan, int type)
-// {
-// 	if (type == LINE)
-// 	{
-// 		line->a[X] = plan.a[X];
-// 		line->a[Y] = plan.a[Y];
-// 		line->b[X] = plan.d[X];
-// 		line->b[Y] = plan.c[Y];
-// 	}
-// 	else if (type == COLUMN)
-// 	{
-// 		line->a[X] = plan.a[X];
-// 		line->a[Y] = plan.a[Y];
-// 		line->b[X] = plan.b[X];
-// 		line->b[Y] = plan.d[Y];
-// 	}
-// 	return ;
-// }
-
-// void	ft_trace_grid_bis(t_vars *vars, t_plan_2d plan)
-// {
-// 	int		i;
-// 	t_line	line;
-
-// 	ft_calculate_line(&line, plan, COLUMN);
-// 	i = 0;
-// 	while (i < vars->map->nb_col)
-// 	{
-// 		if (i == (vars->map->nb_col - 1))
-// 		{
-// 			line.a[X] = plan.d[X];
-// 			line.b[X] = plan.d[X];
-// 		}
-// 		ft_put_line(vars, line);
-// 		line.a[X] += plan.d[X] / vars->map->nb_col;
-// 		line.b[X] += plan.d[X] / vars->map->nb_col;
-// 		i++;
-// 	}
-// }
-
-// void	ft_trace_grid(t_vars *vars)
-// {
-// 	t_plan_2d	plan;
-// 	t_line		line;
-// 	int			i;
-
-// 	ft_init_plan(&plan, vars);
-// 	ft_calculate_line(&line, plan, LINE);
-// 	i = 0;
-// 	while (i < vars->map->nb_line)
-// 	{
-// 		if (i == (vars->map->nb_line - 1))
-// 		{
-// 			line.a[Y] = plan.d[Y];
-// 			line.b[Y] = plan.d[Y];
-// 		}
-// 		ft_put_line(vars, line);
-// 		line.a[Y] += plan.d[Y] / vars->map->nb_line;
-// 		line.b[Y] += plan.d[Y] / vars->map->nb_line;
-// 		i++;
-// 	}
-// 	ft_trace_grid_bis(vars, plan);
-// }
-
-void	ft_trace(t_vars *vars)
+void	ft_put_point(t_matrice_2D *mat_2d, t_vars *vars)
 {
+	const float	off_x = ((WIN_X - 1) / 3);
+	const float	off_y = ((WIN_Y - 1) / 3);
+
+	while (mat_2d)
+	{
+		mlx_pixel_put(vars->mlx, vars->win, \
+		(off_x + mat_2d->x), (off_y + mat_2d->y), \
+		0xFF);
+		mat_2d = mat_2d->next;
+	}
+}
+
+void	*ft_check_find(t_point	find)
+{
+	if (find.a[X] == 0 && find.a[Y] == 0)
+		return (FAIL);
+	return (SUCCESS);
+}
+
+void	ft_trace_line(t_vars *vars, t_matrice_2D *mat_2d)
+{
+	int		i;
+	t_line	line;
 	t_point	point;
 	t_point	find[2];
 
-	point.a[X] = 1;
-	point.a[Y] = 1;
-	ft_next_point(point, vars->mat_2d, find);
+	while (mat_2d)
+	{
+		line.a[X] = mat_2d->x;
+		line.a[Y] = mat_2d->y;
+		point.a[X] = mat_2d->point[X];
+		point.a[Y] = mat_2d->point[Y];
+		ft_next_point(point, vars->mat_2d, find);
+		i = 0;
+		while (i < 2)
+		{
+			if (ft_check_find(find[i]) == SUCCESS)
+			{
+				line.b[X] = find[i].a[X];
+				line.b[Y] = find[i].a[Y];
+				ft_put_line(vars, line);
+			}
+			i++;
+		}
+		mat_2d = mat_2d->next;
+	}
+}
+
+void	ft_trace(t_vars *vars)
+{
+	ft_size_line(25, vars->mat_2d);
+	ft_trace_line(vars, vars->mat_2d);
+	// ft_put_point(vars->mat_2d, vars);
 }

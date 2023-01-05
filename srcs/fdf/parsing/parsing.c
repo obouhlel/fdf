@@ -6,11 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:10:36 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/29 21:24:20 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:23:29 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fdf.h"
+#include "../../../includes/fdf.h"
 
 static char	**ft_free_strs(char **strs)
 {

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 12:12:44 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:25:19 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,9 +217,7 @@ int				window_init(t_vars *vars);
 int				key_press(int keycode, t_vars *vars);
 int				close_window(t_vars *vars);
 
-//========================TRACE============================//
-//file trace.c
-void			ft_trace(t_vars *vars);
+//=======================PROJECTION=======================//
 //file projection.c
 void			ft_mat_2d_clear(t_matrice_2D *mat_2d);
 void			*ft_main_projection(t_vars *vars);
@@ -229,6 +227,11 @@ double x, double y);
 //file matrice_projection.c
 double			**ft_matrice_projection(void);
 void			ft_mp_clear(double **mp);
+
+//========================TRACE============================//
+//file trace.c
+void			ft_put_line(t_vars *vars, t_line line);
+void			ft_trace(t_vars *vars);
 //file find.c
 void			ft_id_mat_2d(t_map *map, t_matrice_2D *mat_2d);
 t_point			*ft_next_point(t_point point, t_matrice_2D *mat_2d, \

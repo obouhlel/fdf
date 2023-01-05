@@ -6,11 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 11:16:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 11:48:53 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:23:31 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fdf.h"
+#include "../../../includes/fdf.h"
 
 void	ft_id_mat_2d(t_map *map, t_matrice_2D *mat_2d)
 {

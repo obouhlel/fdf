@@ -6,40 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:21:01 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 12:13:03 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:24:05 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fdf.h"
-
-void	ft_put_line(t_vars *vars, t_line line)
-{
-	int	x;
-	int	y;
-
-	x = line.a[X];
-	y = line.a[Y];
-	if ((line.a[X] - line.a[Y]) < (line.b[X] - line.b[Y]))
-	{
-		while (x <= line.b[X])
-		{
-			y = line.a[Y] + (line.b[Y] - line.a[Y]) * \
-			(x - line.a[X]) / (line.b[X] - line.a[X]);
-			mlx_pixel_put(vars->mlx, vars->win, x, y, 0xFFFFFF);
-			x++;
-		}
-	}
-	else
-	{
-		while (y <= line.b[Y])
-		{
-			x = line.a[X] + (line.b[X] - line.a[X]) * \
-			(y - line.a[Y]) / (line.b[Y] - line.a[Y]);
-			mlx_pixel_put(vars->mlx, vars->win, x, y, 0xFFFFFF);
-			y++;
-		}
-	}
-}
+#include "../../../includes/fdf.h"
 
 /*
 	plan 2D

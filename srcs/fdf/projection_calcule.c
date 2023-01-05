@@ -6,14 +6,14 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 10:02:09 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/03 18:39:15 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/05 11:46:48 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 #include <stdio.h>
 
-static t_matrice_2D	*ft_new_matrice_2d(int x, int y)
+static t_matrice_2D	*ft_new_matrice_2d(double x, double y)
 {
 	t_matrice_2D	*mat_2d;
 

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:57:06 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/04 14:49:08 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/05 11:44:44 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ void	*ft_main_projection(t_vars *vars)
 	if (!vars->mat_2d)
 		return (ft_mp_clear(mp), FAIL);
 	ft_mp_clear(mp);
+	ft_id_mat_2d(vars->map, vars->mat_2d);
 	return (SUCCESS);
 }

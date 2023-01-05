@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/04 15:03:51 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:12:44 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <math.h>
+//need to delete after
+# include <stdio.h>
 
 //======================RETURN=========================//
 # define SUCCESS		(void *)1
@@ -85,6 +87,17 @@ enum e_point
 };
 
 /*
+	point
+
+	A
+*/
+
+typedef struct s_point
+{
+	double	a[2];
+}	t_point;
+
+/*
 	line
 
 	A --- B
@@ -107,10 +120,10 @@ typedef struct s_line
 
 typedef struct s_plan_2d
 {
-	int	a[2];
-	int	b[2];
-	int	c[2];
-	int	d[2];
+	double	a[2];
+	double	b[2];
+	double	c[2];
+	double	d[2];
 }	t_plan_2d;
 
 /*
@@ -205,8 +218,8 @@ int				key_press(int keycode, t_vars *vars);
 int				close_window(t_vars *vars);
 
 //========================TRACE============================//
-//file grid.c
-void			ft_trace_grid(t_vars *vars);
+//file trace.c
+void			ft_trace(t_vars *vars);
 //file projection.c
 void			ft_mat_2d_clear(t_matrice_2D *mat_2d);
 void			*ft_main_projection(t_vars *vars);
@@ -218,5 +231,7 @@ double			**ft_matrice_projection(void);
 void			ft_mp_clear(double **mp);
 //file find.c
 void			ft_id_mat_2d(t_map *map, t_matrice_2D *mat_2d);
+t_point			*ft_next_point(t_point point, t_matrice_2D *mat_2d, \
+								t_point find[2]);
 
 #endif

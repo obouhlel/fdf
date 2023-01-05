@@ -1,5 +1,3 @@
 FDF :
 
-- Need to understand the algorithme of Bresenham
-- Need to do list of matrice 3L and 1C with the map value
 - Need to understand the algorithme of Cohen-Sutherland

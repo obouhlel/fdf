@@ -10,9 +10,13 @@ SRCS		=  srcs/fdf/color/ft_color_add_back.c srcs/fdf/color/ft_color_add_front.c 
 			srcs/fdf/map/ft_map_clear.c srcs/fdf/map/ft_map_last.c srcs/fdf/map/ft_map_new.c \
 			srcs/fdf/map/ft_map_size.c srcs/fdf/map/ft_map_init_nb_line.c srcs/fdf/map/ft_map_matrice.c\
 			srcs/fdf/map/ft_map_print.c \
-			srcs/fdf/main.c srcs/fdf/vars.c srcs/fdf/window.c \
 			srcs/fdf/parsing/parsing.c srcs/fdf/parsing/check_parsing.c \
-			srcs/fdf/projection/projection.c srcs/fdf/projection/projection_calcule.c srcs/fdf/projection/matrice_projection.c \
+			srcs/fdf/projection/main_projection.c srcs/fdf/projection/projection_calcule.c \
+			srcs/fdf/projection/matrice_projection.c srcs/fdf/projection/ft_new_projection.c \
+			srcs/fdf/projection/ft_projection_add_back.c srcs/fdf/projection/ft_projection_clear.c \
+			srcs/fdf/projection/ft_projection_last.c srcs/fdf/projection/ft_projection_set_color.c \
+			srcs/fdf/projection/ft_id_projection.c \
+			srcs/fdf/main.c srcs/fdf/vars.c srcs/fdf/window.c \
 			srcs/fdf/trace/trace.c srcs/fdf/trace/find.c srcs/fdf/trace/ft_put_line.c srcs/fdf/trace/ft_size_line.c
 
 OBJS		= $(SRCS:%.c=%.o)

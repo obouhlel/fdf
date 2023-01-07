@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_size_line.c                                     :+:      :+:    :+:   */
+/*   ft_projection_last.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 12:55:17 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 13:21:29 by obouhlel         ###   ########.fr       */
+/*   Created: 2023/01/07 11:38:04 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/07 11:38:24 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-void	ft_size_line(double offset, t_projection *projection)
+t_projection	*ft_projection_last(t_projection *projection)
 {
-	while (projection)
-	{
-		projection->x *= offset;
-		projection->y *= offset;
+	while (projection && projection->next)
 		projection = projection->next;
-	}
+	return (projection);
 }

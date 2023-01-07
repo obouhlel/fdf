@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 09:41:43 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:21:44 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ enum e_point
 
 typedef struct s_point
 {
-	double	a[2];
+	double			a[2];
+	unsigned int	color;
 }	t_point;
 
 /*
@@ -105,8 +106,9 @@ typedef struct s_point
 
 typedef struct s_line
 {
-	double	a[2];
-	double	b[2];
+	double			a[2];
+	double			b[2];
+	unsigned int 	color;
 }	t_line;
 
 /*
@@ -142,13 +144,14 @@ typedef struct s_matrice_3D
 	struct s_matrice_3D	*next;
 }	t_matrice_3D;
 
-typedef struct s_matrice_2D
+typedef struct s_projection
 {
 	int					point[2];
+	unsigned int		color;
 	double				x;
 	double				y;
-	struct s_matrice_2D	*next;
-}	t_matrice_2D;
+	struct s_projection	*next;
+}	t_projection;
 
 //========================MAP============================//
 typedef struct s_map
@@ -197,7 +200,7 @@ typedef struct s_vars
 	void			*mlx;
 	void			*win;
 	t_map			*map;
-	t_matrice_2D	*mat_2d;
+	t_projection	*projection;
 	t_color			*color;
 }	t_vars;
 
@@ -218,11 +221,16 @@ int				key_press(int keycode, t_vars *vars);
 int				close_window(t_vars *vars);
 
 //=======================PROJECTION=======================//
+t_projection	*ft_new_matrice_2d(double x, double y);
+void			ft_projection_add_back(t_projection **projection, t_projection *new);
+void			ft_projection_clear(t_projection *projection);
+t_projection	*ft_projection_last(t_projection *projection);
+void			ft_projection_set_color(t_projection *projection, t_color *color);
+void			ft_id_projection(t_map *map, t_projection *projection);
 //file projection.c
-void			ft_mat_2d_clear(t_matrice_2D *mat_2d);
 void			*ft_main_projection(t_vars *vars);
 //file projection_calcule.c
-t_matrice_2D	*ft_calcule_projection(t_map *map, double **mp, \
+t_projection	*ft_calcule_projection(t_map *map, double **mp, \
 double x, double y);
 //file matrice_projection.c
 double			**ft_matrice_projection(void);
@@ -230,12 +238,11 @@ void			ft_mp_clear(double **mp);
 
 //========================TRACE============================//
 void			ft_put_line(t_vars *vars, t_line line);
-void			ft_size_line(double offset, t_matrice_2D *mat_2d);
+void			ft_size_line(double offset, t_projection *projection);
 //file trace.c
 void			ft_trace(t_vars *vars);
 //file find.c
-void			ft_id_mat_2d(t_map *map, t_matrice_2D *mat_2d);
-t_point			*ft_next_point(t_point point, t_matrice_2D *mat_2d, \
+t_point			*ft_next_point(t_point point, t_projection *projection, \
 								t_point find[2]);
 
 #endif

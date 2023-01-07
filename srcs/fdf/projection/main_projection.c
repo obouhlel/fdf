@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_size_line.c                                     :+:      :+:    :+:   */
+/*   main_projection.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 12:55:17 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 13:21:29 by obouhlel         ###   ########.fr       */
+/*   Created: 2023/01/03 11:57:06 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/07 13:22:23 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-void	ft_size_line(double offset, t_projection *projection)
+void	*ft_main_projection(t_vars *vars)
 {
-	while (projection)
-	{
-		projection->x *= offset;
-		projection->y *= offset;
-		projection = projection->next;
-	}
+	double	**mp;
+	double	x;
+	double	y;
+
+	x = 0;
+	y = 0;
+	mp = ft_matrice_projection();
+	if (!mp)
+		return (FAIL);
+	vars->projection = ft_calcule_projection(vars->map, mp, x, y);
+	if (!vars->projection)
+		return (ft_mp_clear(mp), FAIL);
+	ft_mp_clear(mp);
+	ft_id_projection(vars->map, vars->projection);
+	ft_projection_set_color(vars->projection, vars->color);
+	return (SUCCESS);
 }

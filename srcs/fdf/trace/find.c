@@ -6,36 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 11:16:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 11:11:53 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:21:29 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
-
-void	ft_id_mat_2d(t_map *map, t_matrice_2D *mat_2d)
-{
-	t_matrice_3D	*tmp;
-	int				x;
-	int				y;
-
-	tmp = NULL;
-	y = 1;
-	while (map)
-	{
-		tmp = map->mat_3d;
-		x = 1;
-		while (tmp)
-		{
-			mat_2d->point[X] = x;
-			mat_2d->point[Y] = y;
-			x++;
-			mat_2d = mat_2d->next;
-			tmp = tmp->next;
-		}
-		y++;
-		map = map->next_line;
-	}
-}
 
 void	ft_init_find(t_point *find)
 {
@@ -55,24 +30,26 @@ void	ft_init_find(t_point *find)
 	}
 }
 
-t_point	*ft_next_point(t_point point, t_matrice_2D *mat_2d, t_point find[2])
+t_point	*ft_next_point(t_point point, t_projection *projection, t_point find[2])
 {
 	ft_init_find(find);
-	while (mat_2d)
+	while (projection)
 	{
-		if (mat_2d->point[X] == (point.a[X] + 1) \
-			&& mat_2d->point[Y] == point.a[Y])
+		if (projection->point[X] == (point.a[X] + 1) \
+			&& projection->point[Y] == point.a[Y])
 		{
-			find[X].a[X] = mat_2d->x;
-			find[X].a[Y] = mat_2d->y;
+			find[X].a[X] = projection->x;
+			find[X].a[Y] = projection->y;
+			find[X].color = projection->color;
 		}
-		if (mat_2d->point[Y] == (point.a[Y] + 1) \
-			&& mat_2d->point[X] == point.a[X])
+		if (projection->point[Y] == (point.a[Y] + 1) \
+			&& projection->point[X] == point.a[X])
 		{
-			find[Y].a[X] = mat_2d->x;
-			find[Y].a[Y] = mat_2d->y;
+			find[Y].a[X] = projection->x;
+			find[Y].a[Y] = projection->y;
+			find[Y].color = projection->color;
 		}
-		mat_2d = mat_2d->next;
+		projection = projection->next;
 	}
 	return (find);
 }

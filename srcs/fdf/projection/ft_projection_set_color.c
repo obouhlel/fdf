@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projection.c                                       :+:      :+:    :+:   */
+/*   ft_projection_set_color.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 11:57:06 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 13:59:27 by obouhlel         ###   ########.fr       */
+/*   Created: 2023/01/07 11:48:17 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/07 13:27:36 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-void	*ft_main_projection(t_vars *vars)
+void	ft_projection_set_color(t_projection *projection, t_color *color)
 {
-	double	**mp;
-	double	x;
-	double	y;
-
-	x = 0;
-	y = 0;
-	mp = ft_matrice_projection();
-	if (!mp)
-		return (FAIL);
-	vars->mat_2d = ft_calcule_projection(vars->map, mp, x, y);
-	if (!vars->mat_2d)
-		return (ft_mp_clear(mp), FAIL);
-	ft_mp_clear(mp);
-	ft_id_mat_2d(vars->map, vars->mat_2d);
-	return (SUCCESS);
+	if (!color && !projection)
+		return ;
+	while (projection && color)
+	{
+		if (projection->point[X] == color->col \
+			&& projection->point[Y] == color->line)
+		{
+			projection->color = color->value;
+			color = color->next;
+		}
+		projection = projection->next;
+	}
 }

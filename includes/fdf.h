@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 13:21:44 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:19:13 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ typedef struct s_line
 {
 	double			a[2];
 	double			b[2];
-	unsigned int 	color;
+	unsigned int	color;
 }	t_line;
 
 /*
@@ -222,10 +222,12 @@ int				close_window(t_vars *vars);
 
 //=======================PROJECTION=======================//
 t_projection	*ft_new_matrice_2d(double x, double y);
-void			ft_projection_add_back(t_projection **projection, t_projection *new);
+void			ft_projection_add_back(t_projection **projection, \
+										t_projection *new);
 void			ft_projection_clear(t_projection *projection);
 t_projection	*ft_projection_last(t_projection *projection);
-void			ft_projection_set_color(t_projection *projection, t_color *color);
+void			ft_projection_set_color(t_projection *projection, \
+										t_color *color);
 void			ft_id_projection(t_map *map, t_projection *projection);
 //file projection.c
 void			*ft_main_projection(t_vars *vars);

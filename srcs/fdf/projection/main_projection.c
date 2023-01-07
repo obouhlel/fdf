@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:57:06 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 13:22:23 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:07:26 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*ft_main_projection(t_vars *vars)
 {
-	double	**mp;
-	double	x;
-	double	y;
+	float	**mp;
+	float	x;
+	float	y;
 
 	x = 0;
 	y = 0;

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 17:19:13 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:07:26 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,30 +60,15 @@ enum e_event {
 //========================PLAN=========================//
 
 /*
-	For the function ft_trace_grid
-	I need to calculate the line with
-	the type of line, if it's column
-	or line.
-*/
-
-enum e_plan_2d
-{
-	COLUMN,
-	LINE,
-};
-
-/*
 	index for tab, when I need 0 1 2,
 	0 it's X
 	1 it's Y
-	2 it's Z
 */
 
 enum e_point
 {
 	X,
-	Y,
-	Z,
+	Y
 };
 
 /*
@@ -94,7 +79,7 @@ enum e_point
 
 typedef struct s_point
 {
-	double			a[2];
+	float			a[2];
 	unsigned int	color;
 }	t_point;
 
@@ -106,27 +91,10 @@ typedef struct s_point
 
 typedef struct s_line
 {
-	double			a[2];
-	double			b[2];
+	float			a[2];
+	float			b[2];
 	unsigned int	color;
 }	t_line;
-
-/*
-	plan 2D
-
-	A --- C
-	|     |
-	|     |
-	B --- D
-*/
-
-typedef struct s_plan_2d
-{
-	double	a[2];
-	double	b[2];
-	double	c[2];
-	double	d[2];
-}	t_plan_2d;
 
 /*
 	MATRICE 3 * 1
@@ -148,8 +116,8 @@ typedef struct s_projection
 {
 	int					point[2];
 	unsigned int		color;
-	double				x;
-	double				y;
+	float				x;
+	float				y;
 	struct s_projection	*next;
 }	t_projection;
 
@@ -221,7 +189,7 @@ int				key_press(int keycode, t_vars *vars);
 int				close_window(t_vars *vars);
 
 //=======================PROJECTION=======================//
-t_projection	*ft_new_matrice_2d(double x, double y);
+t_projection	*ft_new_matrice_2d(float x, float y);
 void			ft_projection_add_back(t_projection **projection, \
 										t_projection *new);
 void			ft_projection_clear(t_projection *projection);
@@ -232,15 +200,15 @@ void			ft_id_projection(t_map *map, t_projection *projection);
 //file projection.c
 void			*ft_main_projection(t_vars *vars);
 //file projection_calcule.c
-t_projection	*ft_calcule_projection(t_map *map, double **mp, \
-double x, double y);
+t_projection	*ft_calcule_projection(t_map *map, float **mp, \
+float x, float y);
 //file matrice_projection.c
-double			**ft_matrice_projection(void);
-void			ft_mp_clear(double **mp);
+float			**ft_matrice_projection(void);
+void			ft_mp_clear(float **mp);
 
 //========================TRACE============================//
 void			ft_put_line(t_vars *vars, t_line line);
-void			ft_size_line(double offset, t_projection *projection);
+void			ft_size_line(float offset, t_projection *projection);
 //file trace.c
 void			ft_trace(t_vars *vars);
 //file find.c

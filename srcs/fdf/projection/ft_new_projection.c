@@ -6,13 +6,13 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 11:37:24 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 13:21:29 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:07:26 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-t_projection	*ft_new_matrice_2d(double x, double y)
+t_projection	*ft_new_matrice_2d(float x, float y)
 {
 	t_projection	*projection;
 

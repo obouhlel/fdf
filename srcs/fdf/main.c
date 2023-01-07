@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 18:43:31 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 12:19:30 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:10:04 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static int	main_fdf_2(t_vars *vars)
 		ft_free_vars(vars);
 		return (EXIT_FAILURE);
 	}
-	ft_map_print(vars->map);
-	ft_color_print(vars->color);
 	window_init(vars);
 	ft_free_vars(vars);
 	return (EXIT_SUCCESS);
@@ -47,7 +45,7 @@ static int	main_fdf(t_vars *vars, char *name_file)
 		return (EXIT_FAILURE);
 	}
 	close(fd);
-	if (!main_fdf_2(vars))
+	if (main_fdf_2(vars))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -69,7 +67,7 @@ int	main(int ac, char **av)
 		ft_free_vars(vars);
 		return (EXIT_FAILURE);
 	}
-	if (!main_fdf(vars, av[1]))
+	if (main_fdf(vars, av[1]))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

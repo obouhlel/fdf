@@ -6,13 +6,13 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:03 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 11:10:32 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:07:26 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-void	ft_mp_clear(double **mp)
+void	ft_mp_clear(float **mp)
 {
 	int	i;
 
@@ -27,19 +27,19 @@ void	ft_mp_clear(double **mp)
 		free(mp);
 }
 
-double	**ft_matrice_projection(void)
+float	**ft_matrice_projection(void)
 {
-	double	**mp;
+	float	**mp;
 	int		i;
 
 	mp = NULL;
-	mp = (double **)malloc(sizeof(double *) * 2);
+	mp = (float **)malloc(sizeof(float *) * 2);
 	if (!mp)
 		return (FAIL);
 	i = 0;
 	while (i < 2)
 	{
-		mp[i] = (double *)malloc(sizeof(double) * 3);
+		mp[i] = (float *)malloc(sizeof(float) * 3);
 		if (!mp[i])
 			return (ft_mp_clear(mp), FAIL);
 		i++;

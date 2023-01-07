@@ -6,29 +6,15 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:21:01 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 17:27:23 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:20:16 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-void	ft_put_point(t_projection *projection, t_vars *vars)
-{
-	const float	off_x = ((WIN_X - 1) / 3);
-	const float	off_y = ((WIN_Y - 1) / 3);
-
-	while (projection)
-	{
-		mlx_pixel_put(vars->mlx, vars->win, \
-		(off_x + projection->x), (off_y + projection->y), \
-		0xFFFFFF);
-		projection = projection->next;
-	}
-}
-
 void	*ft_check_find(t_point	find)
 {
-	if (find.a[X] == 0 && find.a[Y] == 0)
+	if (find.a[X] == INT_MIN && find.a[Y] == INT_MIN)
 		return (FAIL);
 	return (SUCCESS);
 }

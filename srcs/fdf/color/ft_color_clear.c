@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:19:22 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 14:19:41 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 09:44:48 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_color_clear(t_color *color)
 	while (color)
 	{
 		tmp = color->next;
-		free(color->hex);
 		free(color);
 		color = tmp;
 	}

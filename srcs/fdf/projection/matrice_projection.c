@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:21:03 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 13:59:21 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 11:10:32 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ double	**ft_matrice_projection(void)
 	mp[0][2] = 0;
 	mp[1][0] = 1 / sqrt(6);
 	mp[1][1] = 1 / sqrt(6);
-	mp[1][2] = sqrt(2 / 3);
+	mp[1][2] = -sqrt(2) / sqrt(3);
 	return (mp);
 }

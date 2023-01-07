@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:21:01 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 14:02:07 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 10:59:25 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_put_point(t_matrice_2D *mat_2d, t_vars *vars)
 	{
 		mlx_pixel_put(vars->mlx, vars->win, \
 		(off_x + mat_2d->x), (off_y + mat_2d->y), \
-		0xFF);
+		0xFFFFFF);
 		mat_2d = mat_2d->next;
 	}
 }
@@ -64,7 +64,7 @@ void	ft_trace_line(t_vars *vars, t_matrice_2D *mat_2d)
 
 void	ft_trace(t_vars *vars)
 {
-	ft_size_line(25, vars->mat_2d);
+	ft_size_line(10, vars->mat_2d);
 	ft_trace_line(vars, vars->mat_2d);
 	// ft_put_point(vars->mat_2d, vars);
 }

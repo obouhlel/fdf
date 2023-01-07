@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 14:02:43 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 09:41:43 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ typedef struct s_color
 {
 	int				col;
 	int				line;
-	char			*hex;
+	unsigned int	value;
 	struct s_color	*next;
 }	t_color;
 

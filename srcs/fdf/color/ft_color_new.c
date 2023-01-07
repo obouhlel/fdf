@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:19:08 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 15:03:34 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/07 09:42:01 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ t_color	*ft_color_new(char *hex, int col, int line)
 		return (FAIL);
 	new->col = col;
 	new->line = line;
-	new->hex = hex;
+	new->value = ft_atoi_base_16(hex);
 	new->next = NULL;
+	free(hex);
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/10 12:28:30 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:31:19 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ void			*ft_check_parsing(char *line);
 //file Window.c
 int				window_init(t_vars *vars);
 int				keyboard(int keycode, t_vars *vars);
-void			my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
+void			put_pixel(t_vars *vars, int x, int y, int color);
 int				close_window(t_vars *vars);
 
 //=======================PROJECTION=======================//

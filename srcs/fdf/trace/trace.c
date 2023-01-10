@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:21:01 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/10 13:49:56 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:17:57 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_check_find(t_point	find)
 {
-	if (find.a[X] == 0 && find.a[Y] == 0)
+	if (find.a[X] == INT_MIN && find.a[Y] == INT_MIN)
 		return (FAIL);
 	return (SUCCESS);
 }

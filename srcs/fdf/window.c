@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:11 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/10 13:54:08 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:31:19 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	keyboard(int keycode, t_vars *vars)
 	return (EXIT_SUCCESS);
 }
 
-void	my_mlx_pixel_put(t_vars *vars, int x, int y, int color)
+void	put_pixel(t_vars *vars, int x, int y, int color)
 {
 	char	*pixel;
 	int		pos;

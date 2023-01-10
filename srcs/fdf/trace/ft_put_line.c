@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:22:38 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/10 12:51:43 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:31:19 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ static void	ft_put_line_bis(t_vars *vars, t_line line, float y)
 	{
 		x = line.a[X] + (line.b[X] - line.a[X]) * \
 		(y - line.a[Y]) / (line.b[Y] - line.a[Y]);
-		my_mlx_pixel_put(vars, off_x + x, \
-						off_y + y, line.color);
+		put_pixel(vars, off_x + x, off_y + y, line.color);
 		y++;
 	}
 }
@@ -43,8 +42,7 @@ void	ft_put_line(t_vars *vars, t_line line)
 		{
 			y = line.a[Y] + (line.b[Y] - line.a[Y]) * \
 			(x - line.a[X]) / (line.b[X] - line.a[X]);
-			my_mlx_pixel_put(vars, off_x + x, \
-							off_y + y, line.color);
+			put_pixel(vars, off_x + x, off_y + y, line.color);
 			x++;
 		}
 	}

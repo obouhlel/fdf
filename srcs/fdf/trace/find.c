@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 11:16:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/10 13:49:19 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:18:03 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_init_find(t_point *find)
 		j = 0;
 		while (j < 2)
 		{
-			find[i].a[j] = 0;
+			find[i].a[j] = INT_MIN;
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/10 11:01:47 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 12:28:30 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,18 @@ enum e_event {
 };
 
 //========================MASK=========================//
-# define NOEVENTMASK	0b0
-# define KEYPRESSMASK	0b1
-# define KEYRELEASEMASK	0b10
+# define NOEVENTMASK		0b0
+# define KEYPRESSMASK		0b1
+# define KEYRELEASEMASK		0b10
 
 //========================KEY==========================//
 # define ESCAPE	65307
+# define LEFT	65361
+# define RIGHT	65363
+# define UP		65362
+# define DOWN	65364
+# define PGUP	65365
+# define PGDOWN	65366
 
 //========================PLAN=========================//
 
@@ -201,6 +207,7 @@ typedef struct s_vars
 	void			*win;
 	void			*img;
 	char			*addr;
+	int				size;
 	int				bit_per_pixel;
 	int				size_line;
 	int				endian;
@@ -221,9 +228,9 @@ void			*ft_check_parsing(char *line);
 
 //=======================WINDOW============================//
 //file Window.c
-void			my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 int				window_init(t_vars *vars);
-int				key_press(int keycode, t_vars *vars);
+int				keyboard(int keycode, t_vars *vars);
+void			my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 int				close_window(t_vars *vars);
 
 //=======================PROJECTION=======================//

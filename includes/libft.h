@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:05:19 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 09:25:41 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:10:58 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # define INT_MIN -2147483648
+# define INT_MAX 2147483647
 
 //type of char
 int				ft_isascii(int c);

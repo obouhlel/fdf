@@ -6,25 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:21:01 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/10 11:05:37 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:49:56 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
-
-void	ft_put_point(t_projection *projection, t_vars *vars)
-{
-	const float	off_x = ((WIN_X - 1) / 3);
-	const float	off_y = ((WIN_Y - 1) / 3);
-
-	while (projection)
-	{
-		my_mlx_pixel_put(vars, \
-		(off_x + projection->x), (off_y + projection->y), \
-		0xFFFFFF);
-		projection = projection->next;
-	}
-}
 
 void	*ft_check_find(t_point	find)
 {
@@ -64,6 +50,6 @@ void	ft_trace_line(t_vars *vars, t_projection *projection)
 
 void	ft_trace(t_vars *vars)
 {
-	ft_size_line(25, vars->projection);
+	ft_size_line(vars->size, vars->projection);
 	ft_trace_line(vars, vars->projection);
 }

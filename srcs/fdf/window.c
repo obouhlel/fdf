@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:11 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/10 11:04:32 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:54:08 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,37 @@ int	close_window(t_vars *vars)
 	exit(0);
 }
 
-int	key_press(int keycode, t_vars *vars)
+int	keyboard(int keycode, t_vars *vars)
 {
+	static int	x = 0;
+	static int	y = 0;
+
 	if (keycode == ESCAPE)
 		close_window(vars);
+	if (keycode == RIGHT)
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img, ++x, y);
+	if (keycode == LEFT)
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img, --x, y);
+	if (keycode == UP)
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img, x, --y);
+	if (keycode == DOWN)
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img, x, ++y);
+	if (keycode == PGUP)
+	{
+		vars->size++;
+		ft_trace(vars);
+	}
 	return (EXIT_SUCCESS);
 }
 
 void	my_mlx_pixel_put(t_vars *vars, int x, int y, int color)
 {
-	char	*dst;
+	char	*pixel;
+	int		pos;
 
-	dst = vars->addr + (y * vars->size_line + x * (vars->bit_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	pos = (y * vars->size_line + x * (vars->bit_per_pixel / 8));
+	pixel = vars->addr + pos;
+	*(unsigned int *)pixel = color;
 }
 
 int	window_init(t_vars *vars)
@@ -45,8 +63,8 @@ int	window_init(t_vars *vars)
 									&(vars->size_line), &(vars->endian));
 	ft_trace(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
-	mlx_key_hook(vars->win, &key_press, vars);
-	mlx_hook(vars->win, ON_KEYDOWN, KEYPRESSMASK, &key_press, vars);
+	mlx_key_hook(vars->win, &keyboard, vars);
+	mlx_hook(vars->win, ON_KEYDOWN, KEYPRESSMASK, &keyboard, vars);
 	mlx_hook(vars->win, ON_DESTROY, NOEVENTMASK, &close_window, vars);
 	mlx_loop(vars->mlx);
 	return (EXIT_SUCCESS);

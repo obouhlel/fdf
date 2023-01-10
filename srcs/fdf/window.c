@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:11 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 12:45:58 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:04:32 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	close_window(t_vars *vars)
 {
+	mlx_destroy_image(vars->mlx, vars->img);
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
 	ft_free_vars(vars);
@@ -27,12 +28,24 @@ int	key_press(int keycode, t_vars *vars)
 	return (EXIT_SUCCESS);
 }
 
+void	my_mlx_pixel_put(t_vars *vars, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = vars->addr + (y * vars->size_line + x * (vars->bit_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
 int	window_init(t_vars *vars)
 {
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, WIN_X, WIN_Y, "FDF obouhlel");
-	mlx_key_hook(vars->win, &key_press, vars);
+	vars->img = mlx_new_image(vars->mlx, WIN_X, WIN_Y);
+	vars->addr = mlx_get_data_addr(vars->img, &(vars->bit_per_pixel), \
+									&(vars->size_line), &(vars->endian));
 	ft_trace(vars);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
+	mlx_key_hook(vars->win, &key_press, vars);
 	mlx_hook(vars->win, ON_KEYDOWN, KEYPRESSMASK, &key_press, vars);
 	mlx_hook(vars->win, ON_DESTROY, NOEVENTMASK, &close_window, vars);
 	mlx_loop(vars->mlx);

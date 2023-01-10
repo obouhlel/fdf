@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:21:01 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 17:27:23 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:05:37 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_put_point(t_projection *projection, t_vars *vars)
 
 	while (projection)
 	{
-		mlx_pixel_put(vars->mlx, vars->win, \
+		my_mlx_pixel_put(vars, \
 		(off_x + projection->x), (off_y + projection->y), \
 		0xFFFFFF);
 		projection = projection->next;

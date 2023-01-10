@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 17:19:13 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:01:47 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,9 +199,14 @@ typedef struct s_vars
 {
 	void			*mlx;
 	void			*win;
+	void			*img;
+	char			*addr;
+	int				bit_per_pixel;
+	int				size_line;
+	int				endian;
 	t_map			*map;
-	t_projection	*projection;
 	t_color			*color;
+	t_projection	*projection;
 }	t_vars;
 
 //file vars.c
@@ -216,6 +221,7 @@ void			*ft_check_parsing(char *line);
 
 //=======================WINDOW============================//
 //file Window.c
+void			my_mlx_pixel_put(t_vars *vars, int x, int y, int color);
 int				window_init(t_vars *vars);
 int				key_press(int keycode, t_vars *vars);
 int				close_window(t_vars *vars);

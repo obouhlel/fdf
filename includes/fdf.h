@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/10 15:31:19 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:35:47 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,30 +66,15 @@ enum e_event {
 //========================PLAN=========================//
 
 /*
-	For the function ft_trace_grid
-	I need to calculate the line with
-	the type of line, if it's column
-	or line.
-*/
-
-enum e_plan_2d
-{
-	COLUMN,
-	LINE,
-};
-
-/*
-	index for tab, when I need 0 1 2,
+	index for tab, when I need 0 1,
 	0 it's X
 	1 it's Y
-	2 it's Z
 */
 
 enum e_point
 {
 	X,
 	Y,
-	Z,
 };
 
 /*
@@ -100,7 +85,7 @@ enum e_point
 
 typedef struct s_point
 {
-	double			a[2];
+	float			a[2];
 	unsigned int	color;
 }	t_point;
 
@@ -112,27 +97,10 @@ typedef struct s_point
 
 typedef struct s_line
 {
-	double			a[2];
-	double			b[2];
+	float			a[2];
+	float			b[2];
 	unsigned int	color;
 }	t_line;
-
-/*
-	plan 2D
-
-	A --- C
-	|     |
-	|     |
-	B --- D
-*/
-
-typedef struct s_plan_2d
-{
-	double	a[2];
-	double	b[2];
-	double	c[2];
-	double	d[2];
-}	t_plan_2d;
 
 /*
 	MATRICE 3 * 1
@@ -154,8 +122,8 @@ typedef struct s_projection
 {
 	int					point[2];
 	unsigned int		color;
-	double				x;
-	double				y;
+	float				x;
+	float				y;
 	struct s_projection	*next;
 }	t_projection;
 
@@ -207,6 +175,7 @@ typedef struct s_vars
 	void			*win;
 	void			*img;
 	char			*addr;
+	int				ofst[2];
 	int				size;
 	int				bit_per_pixel;
 	int				size_line;

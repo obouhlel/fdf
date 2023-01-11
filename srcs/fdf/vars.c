@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 12:12:37 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 18:18:24 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:02:54 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_vars	*ft_init_vars(t_vars *vars)
 	vars->lst = NULL;
 	vars->x_max = 0;
 	vars->y_max = 0;
+	vars->dist_point = 0;
 	return (vars);
 }
 

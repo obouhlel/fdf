@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 12:12:37 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 11:42:44 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:07:49 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ t_vars	*ft_init_vars(t_vars *vars)
 		return (FAIL);
 	vars->mlx = NULL;
 	vars->win = NULL;
+	vars->img = NULL;
+	vars->addr = NULL;
+	vars->ofst[X] = ((WIN_X - 1) / 2);
+	vars->ofst[Y] = ((WIN_Y - 1) / 5);
+	vars->size = 3;
+	vars->bit_per_pixel = 0;
+	vars->size_line = 0;
+	vars->endian = 0;
 	vars->map = NULL;
 	vars->color = NULL;
 	vars->projection = NULL;

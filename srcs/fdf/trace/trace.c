@@ -6,7 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:21:01 by obouhlel          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/01/07 18:42:22 by obouhlel         ###   ########.fr       */
+=======
+/*   Updated: 2023/01/10 15:17:57 by obouhlel         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +54,6 @@ void	ft_trace_line(t_vars *vars, t_projection *projection)
 
 void	ft_trace(t_vars *vars)
 {
-	ft_size_line(25, vars->projection);
+	ft_size_line(vars->size, vars->projection);
 	ft_trace_line(vars, vars->projection);
 }

@@ -6,32 +6,14 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:22:38 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 17:24:09 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:59:28 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-static void	ft_put_line_bis(t_vars *vars, t_line line, float y)
-{
-	const float	off_x = ((WIN_X - 1) / 2);
-	const float	off_y = ((WIN_Y - 1) / 5);
-	float		x;
-
-	while (y <= line.b[Y])
-	{
-		x = line.a[X] + (line.b[X] - line.a[X]) * \
-		(y - line.a[Y]) / (line.b[Y] - line.a[Y]);
-		mlx_pixel_put(vars->mlx, vars->win, off_x + x, \
-						off_y + y, line.color);
-		y++;
-	}
-}
-
 void	ft_put_line(t_vars *vars, t_line line)
 {
-	const float	off_x = ((WIN_X - 1) / 2);
-	const float	off_y = ((WIN_Y - 1) / 5);
 	float		x;
 	float		y;
 
@@ -41,13 +23,20 @@ void	ft_put_line(t_vars *vars, t_line line)
 	{
 		while (x <= line.b[X])
 		{
-			y = line.a[Y] + (line.b[Y] - line.a[Y]) * \
+			y = 0.5 + line.a[Y] + (line.b[Y] - line.a[Y]) * \
 			(x - line.a[X]) / (line.b[X] - line.a[X]);
-			mlx_pixel_put(vars->mlx, vars->win, off_x + x, \
-							off_y + y, line.color);
+			put_pixel(vars, vars->ofst[X] + x, vars->ofst[Y] + y, line.color);
 			x++;
 		}
 	}
 	else
-		ft_put_line_bis(vars, line, y);
+	{
+		while (y <= line.b[Y])
+		{
+			x = 0.5 + line.a[X] + (line.b[X] - line.a[X]) * \
+			(y - line.a[Y]) / (line.b[Y] - line.a[Y]);
+			put_pixel(vars, vars->ofst[X] + x, vars->ofst[Y] + y, line.color);
+			y++;
+		}
+	}
 }

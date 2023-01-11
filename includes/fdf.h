@@ -6,7 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/01/07 18:07:26 by obouhlel         ###   ########.fr       */
+=======
+/*   Updated: 2023/01/10 16:35:47 by obouhlel         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +54,27 @@ enum e_event {
 };
 
 //========================MASK=========================//
-# define NOEVENTMASK	0b0
-# define KEYPRESSMASK	0b1
-# define KEYRELEASEMASK	0b10
+# define NOEVENTMASK		0b0
+# define KEYPRESSMASK		0b1
+# define KEYRELEASEMASK		0b10
 
 //========================KEY==========================//
 # define ESCAPE	65307
+# define LEFT	65361
+# define RIGHT	65363
+# define UP		65362
+# define DOWN	65364
+# define PGUP	65365
+# define PGDOWN	65366
 
 //========================PLAN=========================//
 
 /*
+<<<<<<< HEAD
 	index for tab, when I need 0 1 2,
+=======
+	index for tab, when I need 0 1,
+>>>>>>> master
 	0 it's X
 	1 it's Y
 */
@@ -68,7 +82,11 @@ enum e_event {
 enum e_point
 {
 	X,
+<<<<<<< HEAD
 	Y
+=======
+	Y,
+>>>>>>> master
 };
 
 /*
@@ -167,9 +185,16 @@ typedef struct s_vars
 {
 	void			*mlx;
 	void			*win;
+	void			*img;
+	char			*addr;
+	int				ofst[2];
+	int				size;
+	int				bit_per_pixel;
+	int				size_line;
+	int				endian;
 	t_map			*map;
-	t_projection	*projection;
 	t_color			*color;
+	t_projection	*projection;
 }	t_vars;
 
 //file vars.c
@@ -185,7 +210,8 @@ void			*ft_check_parsing(char *line);
 //=======================WINDOW============================//
 //file Window.c
 int				window_init(t_vars *vars);
-int				key_press(int keycode, t_vars *vars);
+int				keyboard(int keycode, t_vars *vars);
+void			put_pixel(t_vars *vars, int x, int y, int color);
 int				close_window(t_vars *vars);
 
 //=======================PROJECTION=======================//

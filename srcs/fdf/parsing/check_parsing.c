@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:21:57 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 17:03:17 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:54:55 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	*ft_valide_char(char c)
 {
-	const char	*valide_char = "0123456789abcdefx-, \n";
+	const char	*valide_char = "0123456789abcdefABCDEFx-, \n";
 	int			i;
 
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 17:22:36 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:40:00 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,9 @@ typedef struct s_vars
 	int				size_line;
 	int				endian;
 	t_list			*lst;
+	int				x_max;
+	int				y_max;
+	int				dist_point;
 }	t_vars;
 
 //file vars.c
@@ -151,5 +154,6 @@ int		close_window(t_vars *vars);
 
 //=======================PROJECTION=======================//
 void	*ft_main_projection(t_vars *vars);
+int		ft_better_dist(int x_max, int y_max);
 
 #endif

@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 17:57:58 by obouhlel          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/01/07 18:07:26 by obouhlel         ###   ########.fr       */
-=======
-/*   Updated: 2023/01/10 16:35:47 by obouhlel         ###   ########.fr       */
->>>>>>> master
+/*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/11 10:58:43 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +65,10 @@ enum e_event {
 
 //========================PLAN=========================//
 
-/*
-<<<<<<< HEAD
-	index for tab, when I need 0 1 2,
-=======
-	index for tab, when I need 0 1,
->>>>>>> master
-	0 it's X
-	1 it's Y
-*/
-
 enum e_point
 {
 	X,
-<<<<<<< HEAD
-	Y
-=======
 	Y,
->>>>>>> master
 };
 
 /*

@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_color_clear.c                                   :+:      :+:    :+:   */
+/*   ft_lst_last.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 14:19:22 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 09:44:48 by obouhlel         ###   ########.fr       */
+/*   Created: 2023/01/11 14:14:37 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/11 14:16:06 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-void	ft_color_clear(t_color *color)
+t_list	*ft_lst_last(t_list *lst)
 {
-	t_color	*tmp;
-
-	tmp = NULL;
-	while (color)
-	{
-		tmp = color->next;
-		free(color);
-		color = tmp;
-	}
+	while (lst->next && lst)
+		lst = lst->next;
+	return (lst);
 }

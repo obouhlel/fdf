@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_color_last.c                                    :+:      :+:    :+:   */
+/*   ft_lst_add_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 14:19:15 by obouhlel          #+#    #+#             */
-/*   Updated: 2022/12/28 15:05:02 by obouhlel         ###   ########.fr       */
+/*   Created: 2023/01/11 13:32:39 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/11 15:35:51 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-t_color	*ft_color_last(t_color *color)
+void	ft_lst_add_back(t_list **lst, t_list *new)
 {
-	if (!color)
-		return (FAIL);
-	while (color && color->next)
-		color = color->next;
-	return (color);
+	t_list	*last;
+
+	last = NULL;
+	if (!lst && new)
+		return ;
+	if (!*lst)
+	{
+		(*lst) = new;
+		return ;
+	}
+	last = ft_lst_last(*lst);
+	last->next = new;
+	new->previous = last;
 }

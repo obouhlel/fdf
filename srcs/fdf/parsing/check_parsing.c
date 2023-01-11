@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:21:57 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/05 12:23:28 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:31:51 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	*ft_check_parsing_color(char *line, int *i)
 		j++;
 	}
 	*i = i_bis;
-	if (j != 6)
+	if (j > 8 && j <= 0)
 		return (FAIL);
 	return (SUCCESS);
 }

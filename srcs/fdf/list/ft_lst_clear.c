@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_color_print.c                                   :+:      :+:    :+:   */
+/*   ft_lst_clear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 21:41:32 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 09:44:16 by obouhlel         ###   ########.fr       */
+/*   Created: 2023/01/11 14:50:56 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/11 16:02:52 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-void	ft_color_print(t_color *color)
+void	ft_lst_clear(t_list *lst)
 {
-	if (!color)
-		ft_putendl_fd("(null)", 1);
-	while (color)
+	t_list	*tmp;
+
+	tmp = NULL;
+	while (lst)
 	{
-		ft_putstr_fd("colone = ", 1);
-		ft_putnbr_fd(color->col, 1);
-		ft_putstr_fd(", line = ", 1);
-		ft_putnbr_fd(color->line, 1);
-		ft_putchar_fd(' ', 1);
-		ft_putnbr_fd(color->value, 1);
-		ft_putchar_fd('\n', 1);
-		color = color->next;
+		tmp = lst->next;
+		if (lst->map)
+			free(lst->map);
+		if (lst->proj)
+			free(lst->proj);
+		if (lst->pixel)
+			free(lst->pixel);
+		free(lst);
+		lst = tmp;
 	}
 }

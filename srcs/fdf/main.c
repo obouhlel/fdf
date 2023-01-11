@@ -6,25 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:00:26 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 11:00:27 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:13:08 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
-
-static int	main_fdf_2(t_vars *vars)
-{
-	ft_map_init_nb_line(vars->map);
-	if (!ft_main_projection(vars))
-	{
-		ft_putendl_fd("Error", 1);
-		ft_free_vars(vars);
-		return (EXIT_FAILURE);
-	}
-	window_init(vars);
-	ft_free_vars(vars);
-	return (EXIT_SUCCESS);
-}
 
 static int	main_fdf(t_vars *vars, char *name_file)
 {
@@ -44,9 +30,9 @@ static int	main_fdf(t_vars *vars, char *name_file)
 		close(fd);
 		return (EXIT_FAILURE);
 	}
+	ft_lst_print(vars->lst);
 	close(fd);
-	if (main_fdf_2(vars))
-		return (EXIT_FAILURE);
+	ft_free_vars(vars);
 	return (EXIT_SUCCESS);
 }
 

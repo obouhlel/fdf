@@ -4,20 +4,10 @@ NAME		= fdf
 
 NAME_LIB	= libfdf.a
 
-SRCS		=  srcs/fdf/color/ft_color_add_back.c srcs/fdf/color/ft_color_add_front.c srcs/fdf/color/ft_color_clear.c \
-			srcs/fdf/color/ft_color_last.c srcs/fdf/color/ft_color_new.c srcs/fdf/color/ft_color_size.c \
-			srcs/fdf/map/ft_map_add_back.c srcs/fdf/map/ft_map_add_front.c srcs/fdf/color/ft_color_print.c \
-			srcs/fdf/map/ft_map_clear.c srcs/fdf/map/ft_map_last.c srcs/fdf/map/ft_map_new.c \
-			srcs/fdf/map/ft_map_size.c srcs/fdf/map/ft_map_init_nb_line.c srcs/fdf/map/ft_map_matrice.c\
-			srcs/fdf/map/ft_map_print.c \
-			srcs/fdf/parsing/parsing.c srcs/fdf/parsing/check_parsing.c \
-			srcs/fdf/projection/main_projection.c srcs/fdf/projection/projection_calcule.c \
-			srcs/fdf/projection/matrice_projection.c srcs/fdf/projection/ft_new_projection.c \
-			srcs/fdf/projection/ft_projection_add_back.c srcs/fdf/projection/ft_projection_clear.c \
-			srcs/fdf/projection/ft_projection_last.c srcs/fdf/projection/ft_projection_set_color.c \
-			srcs/fdf/projection/ft_id_projection.c \
-			srcs/fdf/main.c srcs/fdf/vars.c srcs/fdf/window.c \
-			srcs/fdf/trace/trace.c srcs/fdf/trace/find.c srcs/fdf/trace/ft_put_line.c
+SRCS		= srcs/fdf/main.c srcs/fdf/vars.c \
+			srcs/fdf/parsing/new_parsing.c srcs/fdf/parsing/check_parsing.c \
+            srcs/fdf/list/ft_lst_add_back.c srcs/fdf/list/ft_lst_last.c srcs/fdf/list/ft_lst_new.c \
+            srcs/fdf/list/ft_lst_print.c srcs/fdf/list/ft_lst_clear.c
 
 OBJS		= $(SRCS:%.c=%.o)
 

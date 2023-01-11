@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:11 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/10 15:31:19 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:27:30 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,6 @@ int	keyboard(int keycode, t_vars *vars)
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img, x, --y);
 	if (keycode == DOWN)
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img, x, ++y);
-	if (keycode == PGUP)
-	{
-		vars->size++;
-		ft_trace(vars);
-	}
 	return (EXIT_SUCCESS);
 }
 

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_parsing.c                                      :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:08:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 16:21:34 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:58:05 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-int	ft_calcule_offset(int n, int base)
+static int	ft_calcule_offset(int n, int base)
 {
 	int	size;
 
 	size = 0;
 	if (n == 0)
 		return (++size);
+	if (n < 0)
+		size++;
 	while (n)
 	{
 		n /= base;

@@ -1,54 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrice_projection.c                               :+:      :+:    :+:   */
+/*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 11:21:03 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 18:07:26 by obouhlel         ###   ########.fr       */
+/*   Created: 2023/01/03 11:57:06 by obouhlel          #+#    #+#             */
+/*   Updated: 2023/01/11 17:23:22 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-void	ft_mp_clear(float **mp)
+static void	*ft_calcule_proj(t_list *lst, float mp[2][3])
 {
-	int	i;
+	t_proj	*proj;
+	float	x;
+	float	y;
 
-	i = 0;
-	while (i < 2)
+	while (lst)
 	{
-		if (mp[i])
-			free(mp[i]);
-		i++;
+		x = (mp[0][0] * lst->map->x) + (mp[0][1] * lst->map->y) + \
+			(mp[0][2] * lst->map->z);
+		y = (mp[1][0] * lst->map->x) + (mp[1][1] * lst->map->y) + \
+			(mp[1][2] * lst->map->z);
+		proj = ft_new_proj(x, y);
+		if (!proj)
+			return (NULL);
+		lst->proj = proj;
+		lst = lst->next;
 	}
-	if (mp)
-		free(mp);
+	return (SUCCESS);
 }
 
-float	**ft_matrice_projection(void)
+void	*ft_main_projection(t_vars *vars)
 {
-	float	**mp;
-	int		i;
+	float	mp[2][3];
 
-	mp = NULL;
-	mp = (float **)malloc(sizeof(float *) * 2);
-	if (!mp)
-		return (FAIL);
-	i = 0;
-	while (i < 2)
-	{
-		mp[i] = (float *)malloc(sizeof(float) * 3);
-		if (!mp[i])
-			return (ft_mp_clear(mp), FAIL);
-		i++;
-	}
 	mp[0][0] = sqrt(2) / 2;
 	mp[0][1] = -sqrt(2) / 2;
 	mp[0][2] = 0;
 	mp[1][0] = 1 / sqrt(6);
 	mp[1][1] = 1 / sqrt(6);
 	mp[1][2] = -sqrt(2) / sqrt(3);
-	return (mp);
+	if (!ft_calcule_proj(vars->lst, mp))
+		return (FAIL);
+	return (SUCCESS);
 }

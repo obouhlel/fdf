@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:22:38 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 12:03:26 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:27:35 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,28 @@
 
 void	ft_put_line(t_vars *vars, t_line line)
 {
-	float		x;
-	float		y;
+	int		d[2];
+	float	x;
+	float	y;
 
-	x = line.a[X];
-	y = line.a[Y];
+	x = line.a[X] - 1;
+	y = line.a[Y] - 1;
+	d[X] = (line.b[X] - line.a[X]);
+	d[Y] = (line.b[Y] - line.a[X]);
 	if ((line.a[X] - line.a[Y]) < (line.b[X] - line.b[Y]))
 	{
-		while (x <= line.b[X])
+		while (++x <= line.b[X])
 		{
-			y = 0.5 + line.a[Y] + (line.b[Y] - line.a[Y]) *	(x - line.a[X]) / (line.b[X] - line.a[X]);
+			y = 0.5 + line.a[Y] + d[Y] * (x - line.a[X]) / d[X];
 			put_pixel(vars, vars->ofst[X] + x, vars->ofst[Y] + y, line.color);
-			x++;
 		}
 	}
 	else
 	{
-		while (y <= line.b[Y])
+		while (++y <= line.b[Y])
 		{
-			x = 0.5 + line.a[X] + (line.b[X] - line.a[X]) * (y - line.a[Y]) / (line.b[Y] - line.a[Y]);
+			x = 0.5 + line.a[X] + d[X] * (y - line.a[Y]) / d[Y];
 			put_pixel(vars, vars->ofst[X] + x, vars->ofst[Y] + y, line.color);
-			y++;
 		}
 	}
 }

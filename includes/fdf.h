@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 16:00:38 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:22:36 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,6 @@ void	put_pixel(t_vars *vars, int x, int y, int color);
 int		close_window(t_vars *vars);
 
 //=======================PROJECTION=======================//
-
+void	*ft_main_projection(t_vars *vars);
 
 #endif

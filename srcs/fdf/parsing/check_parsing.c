@@ -6,11 +6,26 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:21:57 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 12:31:51 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:03:17 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
+
+static void	*ft_valide_char(char c)
+{
+	const char	*valide_char = "0123456789abcdefx-, \n";
+	int			i;
+
+	i = 0;
+	while (valide_char[i])
+	{
+		if (c == valide_char[i])
+			return (SUCCESS);
+		i++;
+	}
+	return (FAIL);
+}
 
 static void	*ft_check_parsing_color(char *line, int *i)
 {
@@ -39,7 +54,7 @@ static void	*ft_check_parsing_color(char *line, int *i)
 	return (SUCCESS);
 }
 
-void	*ft_check_parsing(char *line)
+static void	*ft_check_parsing_value(char *line)
 {
 	const int	len = ft_strlen(line);
 	int			i;
@@ -62,5 +77,21 @@ void	*ft_check_parsing(char *line)
 		if (i == (len - 1) && line[i] == '\n')
 			break ;
 	}
+	return (SUCCESS);
+}
+
+void	*ft_check_parsing(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (ft_valide_char(line[i]) == FAIL)
+			return (FAIL);
+		i++;
+	}
+	if (!ft_check_parsing_value(line))
+		return (FAIL);
 	return (SUCCESS);
 }

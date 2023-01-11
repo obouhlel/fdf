@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:00:26 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 16:13:08 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:23:57 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,14 @@ static int	main_fdf(t_vars *vars, char *name_file)
 		close(fd);
 		return (EXIT_FAILURE);
 	}
-	ft_lst_print(vars->lst);
 	close(fd);
+	if (!ft_main_projection(vars))
+	{
+		ft_putendl_fd("Error", 1);
+		ft_free_vars(vars);
+		return (EXIT_FAILURE);
+	}
+	ft_lst_print(vars->lst);
 	ft_free_vars(vars);
 	return (EXIT_SUCCESS);
 }

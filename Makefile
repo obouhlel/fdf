@@ -17,7 +17,7 @@ SRCS		=  srcs/fdf/color/ft_color_add_back.c srcs/fdf/color/ft_color_add_front.c 
 			srcs/fdf/projection/ft_projection_last.c srcs/fdf/projection/ft_projection_set_color.c \
 			srcs/fdf/projection/ft_id_projection.c \
 			srcs/fdf/main.c srcs/fdf/vars.c srcs/fdf/window.c \
-			srcs/fdf/trace/trace.c srcs/fdf/trace/find.c srcs/fdf/trace/ft_put_line.c srcs/fdf/trace/ft_size_line.c
+			srcs/fdf/trace/trace.c srcs/fdf/trace/find.c srcs/fdf/trace/ft_put_line.c
 
 OBJS		= $(SRCS:%.c=%.o)
 

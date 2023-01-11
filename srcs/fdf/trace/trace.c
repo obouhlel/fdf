@@ -6,20 +6,20 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:46 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 10:57:49 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:03:17 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-void	*ft_check_find(t_point	find)
+static void	*ft_check_find(t_point	find)
 {
 	if (find.a[X] == INT_MIN && find.a[Y] == INT_MIN)
 		return (FAIL);
 	return (SUCCESS);
 }
 
-void	ft_trace_line(t_vars *vars, t_projection *projection)
+static void	ft_trace_line(t_vars *vars, t_projection *projection)
 {
 	int		i;
 	t_line	line;
@@ -44,6 +44,16 @@ void	ft_trace_line(t_vars *vars, t_projection *projection)
 				ft_put_line(vars, line);
 			}
 		}
+		projection = projection->next;
+	}
+}
+
+static void	ft_size_line(float offset, t_projection *projection)
+{
+	while (projection)
+	{
+		projection->x *= offset;
+		projection->y *= offset;
 		projection = projection->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 10:58:43 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:04:05 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,6 @@ void			ft_mp_clear(float **mp);
 
 //========================TRACE============================//
 void			ft_put_line(t_vars *vars, t_line line);
-void			ft_size_line(float offset, t_projection *projection);
 //file trace.c
 void			ft_trace(t_vars *vars);
 //file find.c

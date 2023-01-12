@@ -1,3 +1,0 @@
-FDF :
-
-- Need to understand the algorithme of Cohen-Sutherland

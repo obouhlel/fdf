@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:34:15 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 15:08:44 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:16:46 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	ft_trace_line(t_vars *vars, t_list *lst)
 	int		y;
 
 	y = 0;
-	while (y < vars->y_max)
+	while (y <= vars->y_max)
 	{
 		point[Y] = y;
 		x = 0;
-		while (x < vars->x_max)
+		while (x <= vars->x_max)
 		{
 			point[X] = x;
 			ft_find_next_point_x(lst, &line, point);

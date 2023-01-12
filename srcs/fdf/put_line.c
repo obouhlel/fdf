@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:22:38 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 14:49:08 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:15:23 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ void	ft_put_line(t_vars *vars, t_line line)
 // {
 // 	float	tmp;
 
-// 	tmp = line->a[X];
-// 	line->a[X] = line->b[X];
-// 	line->b[X] = tmp;
-// 	tmp = line->a[Y];
-// 	line->a[Y] = line->b[Y];
-// 	line->b[Y] = tmp;
+// 	tmp = line->start[X];
+// 	line->start[X] = line->stop[X];
+// 	line->stop[X] = tmp;
+// 	tmp = line->start[Y];
+// 	line->start[Y] = line->stop[Y];
+// 	line->stop[Y] = tmp;
 // }
 
 // void	ft_put_line(t_vars *vars, t_line line)
@@ -81,7 +81,7 @@ void	ft_put_line(t_vars *vars, t_line line)
 // 		while (line.start[X] <= line.stop[X])
 // 		{
 // 			if (line.start[X] >= 0 && line.start[X] < WIN_X && line.start[Y] >= 0 && line.start[Y] < WIN_Y)
-// 				put_pixel(vars, vars->ofst[X] + line.start[X], vars->ofst[Y] + line.start[Y], line.color);
+// 				put_pixel(vars, line.start[X], line.start[Y], line.color);
 // 			if (e > 0)
 // 				e += 2 * d[Y];
 // 			else
@@ -110,7 +110,7 @@ void	ft_put_line(t_vars *vars, t_line line)
 // 		while (line.start[Y] <= line.stop[Y])
 // 		{
 // 			if (line.start[X] >= 0 && line.start[X] < WIN_X && line.start[Y] >= 0 && line.start[Y] < WIN_Y)
-// 				put_pixel(vars, vars->ofst[X] + line.start[X], vars->ofst[Y] + line.start[Y], line.color);
+// 				put_pixel(vars, line.start[X], line.start[Y], line.color);
 // 			if (e > 0)
 // 				e += 2 * d[X];
 // 			else

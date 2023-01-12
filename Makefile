@@ -1,6 +1,6 @@
 #VARIABLES
 
-NAME		= fdf
+NAME		= fdf.out
 
 NAME_LIB	= libfdf.a
 

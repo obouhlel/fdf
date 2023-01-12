@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:09:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 13:32:01 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:36:58 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_calcule_pixel_point(t_vars *vars, t_list *lst, int dist_point)
 	vars->origin[Y] = moy_f[Y] * dist_point - moy_px[Y];
 }
 
-static void	*ft_calcule_pixel(t_vars *vars, t_list *lst)
+void	*ft_calcule_pixel(t_vars *vars, t_list *lst)
 {
 	t_pixel	*pixel;
 	int		x;
@@ -57,52 +57,4 @@ static void	*ft_calcule_pixel(t_vars *vars, t_list *lst)
 		lst = lst->next;
 	}
 	return (SUCCESS);
-}
-
-static void	ft_put_pixel_test(t_vars *vars, t_list *lst, int min_x, int min_y)
-{
-	while (lst)
-	{
-		put_pixel(vars, lst->pixel->x + min_x, lst->pixel->y + min_y, lst->pixel->color);
-		lst = lst->next;
-	}
-}
-
-int	ft_pixel_min_x(t_list *lst)
-{
-	int	min;
-
-	min = lst->pixel->x;
-	while (lst)
-	{
-		if (min > lst->pixel->x)
-			min = lst->pixel->x;
-		lst = lst->next;
-	}
-	return (min);
-}
-
-int	ft_pixel_min_y(t_list *lst)
-{
-	int	min;
-
-	min = lst->pixel->y;
-	while (lst)
-	{
-		if (min > lst->pixel->y)
-			min = lst->pixel->y;
-		lst = lst->next;
-	}
-	return (min);
-}
-
-void	ft_trace_img(t_vars *vars)
-{
-	int	min_x;
-	int	min_y;
-
-	ft_calcule_pixel(vars, vars->lst);
-	min_x = -1 * ft_pixel_min_x(vars->lst);
-	min_y = -1 * ft_pixel_min_y(vars->lst);
-	ft_put_pixel_test(vars, vars->lst, min_x, min_y);
 }

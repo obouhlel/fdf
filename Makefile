@@ -9,7 +9,7 @@ SRCS		= srcs/fdf/main.c srcs/fdf/vars.c \
             srcs/fdf/list/ft_lst_print.c srcs/fdf/list/ft_lst_clear.c \
 			srcs/fdf/parsing.c srcs/fdf/check_parsing.c \
 			srcs/fdf/projection.c srcs/fdf/find_1.c srcs/fdf/find_2.c srcs/fdf/pixel.c \
-			srcs/fdf/window.c
+			srcs/fdf/trace.c srcs/fdf/window.c
 
 OBJS		= $(SRCS:%.c=%.o)
 

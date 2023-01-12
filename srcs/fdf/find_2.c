@@ -6,11 +6,39 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 10:52:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 11:28:20 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:37:20 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
+
+int	ft_find_pixel_min_x(t_list *lst)
+{
+	int	min;
+
+	min = lst->pixel->x;
+	while (lst)
+	{
+		if (min > lst->pixel->x)
+			min = lst->pixel->x;
+		lst = lst->next;
+	}
+	return (min);
+}
+
+int	ft_find_pixel_min_y(t_list *lst)
+{
+	int	min;
+
+	min = lst->pixel->y;
+	while (lst)
+	{
+		if (min > lst->pixel->y)
+			min = lst->pixel->y;
+		lst = lst->next;
+	}
+	return (min);
+}
 
 void	ft_init_line(t_line *line)
 {

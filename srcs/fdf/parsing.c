@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:08:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 15:58:02 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:07:42 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,13 @@ static int	ft_calcule_offset(int n, int base)
 	return (size);
 }
 
-static void	*ft_create_map(t_list **lst, char *str, int y)
+static void	*ft_create_map(t_list **lst, char *str, int y, int x)
 {
 	t_list	*tmp;
 	int		z;
-	int		x;
 	int		color;
 
 	tmp = NULL;
-	x = 0;
 	while (*str)
 	{
 		color = 0;
@@ -73,6 +71,7 @@ void	*ft_main_parsing(int fd, t_vars *vars)
 {
 	char	*str;
 	int		y;
+	int		x;
 
 	str = NULL;
 	y = 0;
@@ -83,7 +82,8 @@ void	*ft_main_parsing(int fd, t_vars *vars)
 			break ;
 		if (!ft_check_parsing(str))
 			return (free(str), NULL);
-		if (!ft_create_map(&(vars->lst), str, y))
+		x = 0;
+		if (!ft_create_map(&(vars->lst), str, y, x))
 			return (free(str), NULL);
 		if (y == 0)
 			vars->x_max = ft_find_x_max_map(vars->lst);

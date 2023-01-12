@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:22:38 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 15:15:23 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:11:25 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ void	ft_put_line(t_vars *vars, t_line line)
 // 		e = 2 * d[Y] - d[X];
 // 		while (line.start[X] <= line.stop[X])
 // 		{
-// 			if (line.start[X] >= 0 && line.start[X] < WIN_X && line.start[Y] >= 0 && line.start[Y] < WIN_Y)
+// 			if (line.start[X] >= 0 && line.start[X] < WIN_X && 
+//					line.start[Y] >= 0 && line.start[Y] < WIN_Y)
 // 				put_pixel(vars, line.start[X], line.start[Y], line.color);
 // 			if (e > 0)
 // 				e += 2 * d[Y];
@@ -109,7 +110,8 @@ void	ft_put_line(t_vars *vars, t_line line)
 // 		e = 2 * d[X] - d[Y];
 // 		while (line.start[Y] <= line.stop[Y])
 // 		{
-// 			if (line.start[X] >= 0 && line.start[X] < WIN_X && line.start[Y] >= 0 && line.start[Y] < WIN_Y)
+// 			if (line.start[X] >= 0 && line.start[X] < WIN_X && 
+//					line.start[Y] >= 0 && line.start[Y] < WIN_Y)
 // 				put_pixel(vars, line.start[X], line.start[Y], line.color);
 // 			if (e > 0)
 // 				e += 2 * d[X];

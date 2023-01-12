@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find.c                                             :+:      :+:    :+:   */
+/*   find_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:10:52 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 18:58:08 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:51:33 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,9 @@ int	ft_better_dist(int x_max, int y_max)
 	dist[Y] = win_y_max / y_max;
 	check[X] = dist[Y] * x_max;
 	check[Y] = dist[X] * y_max;
-	if (check[X] > win_x_max && check[Y] > win_y_max)
-		ft_better_dist(x_max + 1, y_max + 1);
-	else if (check[X] > win_x_max)
+	if (check[X] < check[Y])
 		return (dist[Y]);
-	else if (check[Y] > win_y_max)
+	else
 		return (dist[X]);
 	return (EXIT_FAILURE);
 }

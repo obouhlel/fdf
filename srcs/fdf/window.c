@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 17:57:11 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 17:30:48 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:58:00 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	window_init(t_vars *vars)
 	vars->img = mlx_new_image(vars->mlx, WIN_X, WIN_Y);
 	vars->addr = mlx_get_data_addr(vars->img, &(vars->bit_per_pixel), \
 									&(vars->size_line), &(vars->endian));
-	ft_trace(vars);
+	ft_trace_img(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	mlx_key_hook(vars->win, &keyboard, vars);
 	mlx_hook(vars->win, ON_KEYDOWN, KEYPRESSMASK, &keyboard, vars);

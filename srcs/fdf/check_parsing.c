@@ -6,11 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:21:57 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 18:54:55 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:34:49 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/fdf.h"
+#include "../../includes/fdf.h"
 
 static void	*ft_valide_char(char c)
 {

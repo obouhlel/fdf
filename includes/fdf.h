@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 11:55:16 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:02:49 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,5 +167,6 @@ void	ft_init_line(t_line *line);
 void	ft_find_next_point_x(t_list *lst, t_line line, int point[2]);
 void	ft_find_next_point_y(t_list *lst, t_line line, int point[2]);
 
-void	ft_calcule_pixel(t_vars *vars, t_list *lst);
+// void	ft_calcule_pixel(t_vars *vars, t_list *lst);
+void	ft_trace_img(t_vars *vars);
 #endif

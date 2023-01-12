@@ -6,11 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 11:57:06 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 18:40:08 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:35:01 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/fdf.h"
+#include "../../includes/fdf.h"
 
 static void	*ft_calcule_proj(t_list *lst, float mp[2][3])
 {
@@ -45,6 +45,5 @@ void	*ft_main_projection(t_vars *vars)
 	mp[1][2] = -sqrt(2) / sqrt(3);
 	if (!ft_calcule_proj(vars->lst, mp))
 		return (FAIL);
-	vars->dist_point = ft_better_dist(vars->x_max, vars->y_max);
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 18:40:00 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:55:16 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ typedef struct s_vars
 	int				size_line;
 	int				endian;
 	t_list			*lst;
+	int				origin[2];
 	int				x_max;
 	int				y_max;
 	int				dist_point;
@@ -154,6 +155,17 @@ int		close_window(t_vars *vars);
 
 //=======================PROJECTION=======================//
 void	*ft_main_projection(t_vars *vars);
-int		ft_better_dist(int x_max, int y_max);
 
+//
+//file find_1.c
+int		ft_better_dist(int x_max, int y_max);
+float	ft_find_x_min_proj(t_list *lst);
+float	ft_find_x_max_proj(t_list *lst);
+float	ft_find_y_min_proj(t_list *lst);
+float	ft_find_y_max_proj(t_list *lst);
+void	ft_init_line(t_line *line);
+void	ft_find_next_point_x(t_list *lst, t_line line, int point[2]);
+void	ft_find_next_point_y(t_list *lst, t_line line, int point[2]);
+
+void	ft_calcule_pixel(t_vars *vars, t_list *lst);
 #endif

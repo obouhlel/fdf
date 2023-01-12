@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:08:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 13:28:35 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:58:02 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	*ft_create_map(t_list **lst, char *str, int y)
 		if (!tmp || !tmp->map)
 			return (NULL);
 		ft_lst_add_back(lst, tmp);
+		if (*str == '\n')
+			break ;
 	}
 	return (lst);
 }
@@ -79,8 +81,8 @@ void	*ft_main_parsing(int fd, t_vars *vars)
 		str = get_next_line(fd);
 		if (!str)
 			break ;
-		// if (!ft_check_parsing(str))
-		// 	return (free(str), NULL);
+		if (!ft_check_parsing(str))
+			return (free(str), NULL);
 		if (!ft_create_map(&(vars->lst), str, y))
 			return (free(str), NULL);
 		if (y == 0)

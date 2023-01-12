@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:10:52 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 14:37:56 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:00:37 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	ft_better_dist(t_vars *vars, int x_max, int y_max)
 	dist[Y] = win_y_max / y_max;
 	check[X] = dist[Y] * x_max;
 	check[Y] = dist[X] * y_max;
-	
+	if (check[X] < check[Y])
+		vars->dist_point = dist[Y];
+	else
+		vars->dist_point = dist[X];
 }
 
 float	ft_find_x_min_proj(t_list *lst)

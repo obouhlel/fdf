@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 10:52:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 13:37:20 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:54:30 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,43 +48,43 @@ void	ft_init_line(t_line *line)
 	line->stop[Y] = -1;
 }
 
-void	ft_find_next_point_x(t_list *lst, t_line line, int point[2])
+void	ft_find_next_point_x(t_list *lst, t_line *line, int point[2])
 {
-	ft_init_line(&line);
+	ft_init_line(line);
 	while (lst)
 	{
 		if (point[X] == lst->map->x && point[Y] == lst->map->y)
 		{
-			line.start[X] = lst->pixel->x;
-			line.start[Y] = lst->pixel->y;
-			line.color = lst->pixel->color;
+			line->start[X] = lst->pixel->x;
+			line->start[Y] = lst->pixel->y;
+			line->color = lst->pixel->color;
 		}
 		else if ((point[X] + 1) == lst->map->x && point[Y] == lst->map->y)
 		{
-			line.stop[X] = lst->pixel->x;
-			line.stop[Y] = lst->pixel->y;
-			line.color = lst->pixel->color;
+			line->stop[X] = lst->pixel->x;
+			line->stop[Y] = lst->pixel->y;
+			line->color = lst->pixel->color;
 		}
 		lst = lst->next;
 	}
 }
 
-void	ft_find_next_point_y(t_list *lst, t_line line, int point[2])
+void	ft_find_next_point_y(t_list *lst, t_line *line, int point[2])
 {
-	ft_init_line(&line);
+	ft_init_line(line);
 	while (lst)
 	{
 		if (point[X] == lst->map->x && point[Y] == lst->map->y)
 		{
-			line.start[X] = lst->pixel->x;
-			line.start[Y] = lst->pixel->y;
-			line.color = lst->pixel->color;
+			line->start[X] = lst->pixel->x;
+			line->start[Y] = lst->pixel->y;
+			line->color = lst->pixel->color;
 		}
 		if (point[X] == lst->map->x && (point[Y] + 1) == lst->map->y)
 		{
-			line.stop[X] = lst->pixel->x;
-			line.stop[Y] = lst->pixel->y;
-			line.color = lst->pixel->color;
+			line->stop[X] = lst->pixel->x;
+			line->stop[Y] = lst->pixel->y;
+			line->color = lst->pixel->color;
 		}
 		lst = lst->next;
 	}

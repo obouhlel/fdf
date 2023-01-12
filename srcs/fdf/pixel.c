@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:09:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 13:36:58 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:29:44 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_calcule_pixel_point(t_vars *vars, t_list *lst, int dist_point)
 	vars->origin[Y] = moy_f[Y] * dist_point - moy_px[Y];
 }
 
-void	*ft_calcule_pixel(t_vars *vars, t_list *lst)
+static void	*ft_calcule_pixel_bis(t_vars *vars, t_list *lst)
 {
 	t_pixel	*pixel;
 	int		x;
@@ -44,8 +44,8 @@ void	*ft_calcule_pixel(t_vars *vars, t_list *lst)
 	ft_calcule_pixel_point(vars, lst, vars->dist_point);
 	while (lst)
 	{
-		x = (lst->proj->x) * vars->dist_point + vars->origin[X];
-		y = (lst->proj->y) * vars->dist_point + vars->origin[Y];
+		x = (lst->proj->x + 0.5) * vars->dist_point + vars->origin[X];
+		y = (lst->proj->y + 0.5) * vars->dist_point + vars->origin[Y];
 		if (lst->map->color == 0)
 			color = 0xFFFFFF;
 		else
@@ -54,6 +54,22 @@ void	*ft_calcule_pixel(t_vars *vars, t_list *lst)
 		if (!pixel)
 			return (NULL);
 		lst->pixel = pixel;
+		lst = lst->next;
+	}
+	return (SUCCESS);
+}
+
+void	*ft_calcule_pixel(t_vars *vars, t_list *lst)
+{
+	int	min[2];
+
+	ft_calcule_pixel_bis(vars, lst);
+	min[X] = ft_find_pixel_min_x(lst);
+	min[Y] = ft_find_pixel_min_y(lst);
+	while (lst)
+	{
+		lst->pixel->x += (min[X] * -1) + 10;
+		lst->pixel->y += (min[Y] * -1) + 10;
 		lst = lst->next;
 	}
 	return (SUCCESS);

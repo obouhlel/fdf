@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 13:38:37 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:28:43 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void	*ft_main_projection(t_vars *vars);
 
 //
 //file find_1.c
-int		ft_better_dist(int x_max, int y_max);
+void	ft_better_dist(t_vars *vars, int x_max, int y_max);
 float	ft_find_x_min_proj(t_list *lst);
 float	ft_find_x_max_proj(t_list *lst);
 float	ft_find_y_min_proj(t_list *lst);

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:34:15 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 13:36:33 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:19:56 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ static void	ft_put_pixel_test(t_vars *vars, t_list *lst)
 void	ft_trace_img(t_vars *vars)
 {
 	ft_calcule_pixel(vars, vars->lst);
+	ft_lst_print(vars->lst);
 	ft_put_pixel_test(vars, vars->lst);
 }

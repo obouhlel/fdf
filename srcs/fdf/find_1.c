@@ -6,28 +6,24 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:10:52 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 12:51:33 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:37:56 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-int	ft_better_dist(int x_max, int y_max)
+void	ft_better_dist(t_vars *vars, int x_max, int y_max)
 {
-	int			dist[2];
 	const int	win_x_max = WIN_X - 1 - (5 * 2);
 	const int	win_y_max = WIN_Y - 1 - (5 * 2);
+	int			dist[2];
 	int			check[2];
 
 	dist[X] = win_x_max / x_max;
 	dist[Y] = win_y_max / y_max;
 	check[X] = dist[Y] * x_max;
 	check[Y] = dist[X] * y_max;
-	if (check[X] < check[Y])
-		return (dist[Y]);
-	else
-		return (dist[X]);
-	return (EXIT_FAILURE);
+	
 }
 
 float	ft_find_x_min_proj(t_list *lst)

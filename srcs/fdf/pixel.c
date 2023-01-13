@@ -6,13 +6,13 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:09:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 16:09:48 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/13 12:27:53 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-static void	ft_calcule_pixel_point(t_vars *vars, t_list *lst, int dist_point)
+static void	ft_calcule_pixel_point(t_vars *vars, t_list *lst)
 {
 	float	moy_f[2];
 	int		moy_px[2];
@@ -26,12 +26,12 @@ static void	ft_calcule_pixel_point(t_vars *vars, t_list *lst, int dist_point)
 	min_f[Y] = ft_find_y_min_proj(lst);
 	moy_f[X] = (max_f[X] - min_f[X]) / 2;
 	moy_f[Y] = (max_f[Y] - min_f[Y]) / 2;
-	win[X] = WIN_X - 1 - (5 * 2);
-	win[Y] = WIN_Y - 1 - (5 * 2);
+	win[X] = (WIN_X - 1 - 10);
+	win[Y] = (WIN_Y - 1 - 10);
 	moy_px[X] = win[X] / 2;
 	moy_px[Y] = win[Y] / 2;
-	vars->origin[X] = moy_f[X] * dist_point - moy_px[X];
-	vars->origin[Y] = moy_f[Y] * dist_point - moy_px[Y];
+	vars->origin[X] = moy_f[X] * vars->dist_point + moy_px[X];
+	vars->origin[Y] = moy_f[Y] * vars->dist_point + moy_px[Y];
 }
 
 static void	*ft_calcule_pixel_bis(t_vars *vars, t_list *lst)
@@ -41,11 +41,11 @@ static void	*ft_calcule_pixel_bis(t_vars *vars, t_list *lst)
 	int		y;
 	int		color;
 
-	ft_calcule_pixel_point(vars, lst, vars->dist_point);
+	ft_calcule_pixel_point(vars, lst);
 	while (lst)
 	{
-		x = (lst->proj->x + 0.5) * vars->dist_point + vars->origin[X];
-		y = (lst->proj->y + 0.5) * vars->dist_point + vars->origin[Y];
+		x = (lst->proj->x + 0.5) + vars->origin[X];
+		y = (lst->proj->y + 0.5) + vars->origin[Y];
 		if (lst->map->color == 0)
 			color = 0xFFFFFF;
 		else
@@ -61,16 +61,21 @@ static void	*ft_calcule_pixel_bis(t_vars *vars, t_list *lst)
 
 void	*ft_calcule_pixel(t_vars *vars, t_list *lst)
 {
-	int	min[2];
+	// int	min[2];
 
 	ft_calcule_pixel_bis(vars, lst);
-	min[X] = ft_find_pixel_min_x(lst);
-	min[Y] = ft_find_pixel_min_y(lst);
-	while (lst)
-	{
-		lst->pixel->x += (min[X] * -1) + 10;
-		lst->pixel->y += (min[Y] * -1) + 10;
-		lst = lst->next;
-	}
+	printf("max x = %d\n", ft_find_pixel_max_x(lst));
+	printf("max y = %d\n", ft_find_pixel_max_y(lst));
+	printf("min x = %d\n", ft_find_pixel_min_x(lst));
+	printf("min y = %d\n", ft_find_pixel_min_y(lst));
+	// min[X] = ft_find_pixel_min_x(lst);
+	// min[Y] = ft_find_pixel_min_y(lst);
+	// ft_lst_print(lst);
+	// while (lst)
+	// {
+	// 	lst->pixel->x += (min[X] * -1) + 5;
+	// 	lst->pixel->y += (min[Y] * -1) + 5;
+	// 	lst = lst->next;
+	// }
 	return (SUCCESS);
 }

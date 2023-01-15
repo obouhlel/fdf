@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:09:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/13 13:55:01 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/15 01:05:07 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void	*ft_calcule_pixel_bis(t_vars *vars, t_list *lst)
 	ft_calcule_pixel_point(vars, lst);
 	while (lst)
 	{
-		x = (lst->proj->x + 0.5) * vars->dist_point + vars->origin[X];
-		y = (lst->proj->y + 0.5) * vars->dist_point + vars->origin[Y];
+		x = (lst->proj->x + 0.5) * 5 + vars->origin[X];
+		y = (lst->proj->y + 0.5) * 5 + vars->origin[Y];
 		if (lst->map->color == 0)
 			color = 0xFFFFFF;
 		else

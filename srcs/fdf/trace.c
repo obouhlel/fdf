@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:34:15 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 12:23:47 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:32:27 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_trace_line(t_vars *vars, t_list *lst)
 	{
 		point[Y] = y;
 		x = 0;
-		while (x <= ft_find_x_max_map(lst, vars->max_y_map))
+		while (x <= ft_find_x_max_map(lst, y))
 		{
 			point[X] = x;
 			ft_find_next_point_x(lst, &line, point);

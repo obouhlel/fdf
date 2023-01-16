@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:08:57 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 12:29:19 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:36:26 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ int	ft_find_x_max_map(t_list *lst, int y)
 	x_max = 0;
 	while (lst)
 	{
-		x_max = lst->map->x;
-		while (lst->map->y == y)
+		while (lst && lst->map->y == y)
 		{
 			if (x_max < lst->map->x)
 				x_max = lst->map->x;
 			lst = lst->next;
 		}
+		if (x_max > 0)
+			return (x_max);
 		lst = lst->next;
 	}
 	return (x_max);

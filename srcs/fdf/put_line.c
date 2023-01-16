@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:22:38 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 11:58:53 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:55:10 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_swap_line(t_line *line, int d[2])
 {
-	float	tmp;
+	int	tmp;
 
 	tmp = line->start[X];
 	line->start[X] = line->stop[X];
@@ -84,7 +84,7 @@ static void	ft_inc(int *inc, int *d)
 	if (*d < 0)
 	{
 		*inc = -1;
-			*d *= -1;
+		*d *= -1;
 	}
 }
 

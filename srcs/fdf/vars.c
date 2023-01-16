@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 12:12:37 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 12:21:56 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:37:38 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_vars	*ft_init_vars(t_vars *vars)
 	vars->origin[Y] = 0;
 	vars->max_x_map = 0;
 	vars->max_y_map = 0;
-	vars->dist_point = 2;
+	vars->dist_point = 20;
 	return (vars);
 }
 

@@ -6,26 +6,33 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:10:52 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 12:02:38 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:56:29 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-int	ft_better_dist(int x_max, int y_max)
+int	ft_better_dist(t_vars *vars)
 {
-	const int	win_x_max = WIN_X - 1 - (5 * 2);
-	const int	win_y_max = WIN_Y - 1 - (5 * 2);
-	int			dist[2];
-	int			check[2];
+	int	x_max;
+	int	y_max;
+	int	dist[2];
+	int	check[2];
 
-	dist[X] = win_x_max / x_max;
-	dist[Y] = win_y_max / y_max;
+	x_max = ft_find_x_max_proj(vars->lst) + 0.5;
+	y_max = ft_find_y_max_proj(vars->lst) + 0.5;
+	if (y_max == 0)
+		y_max = 1;
+	if (x_max == 0)
+		x_max = 1;
+	dist[X] = (WIN_X - 1 - (5 * 2)) / x_max;
+	dist[Y] = (WIN_Y - 1 - (5 * 2)) / y_max;
 	check[X] = dist[X] * y_max;
 	check[Y] = dist[Y] * x_max;
-	if (check[Y] < win_x_max)
+	printf("check[X] = %d\ncheck[Y] = %d\n", check[X], check[Y]);
+	if (check[Y] < (WIN_X - 1 - (5 * 2)))
 		return (dist[Y]);
-	if (check[X] < win_y_max)
+	if (check[X] < (WIN_Y - 1 - (5 * 2)))
 		return (dist[X]);
 	else
 		return (2);

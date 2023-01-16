@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:22:38 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 12:55:10 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:06:31 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static void	ft_put_pixel_y(t_vars *vars, t_line line, int d[2], int x_inc)
 	{
 		if (x >= 0 && x < WIN_X && y >= 0 && y < WIN_Y)
 			put_pixel(vars, x, y, line.color);
-
 		if (e < 0)
 			e += e_inc_1;
 		else

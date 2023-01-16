@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:21:57 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 10:27:26 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:57:29 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	*ft_valide_char(char c, int color)
 {
-	const char	*valide_char = "-0123456789\nabcdefABCDEFx, ";
+	const char	*valide_char = " -0123456789\nabcdefABCDEFx,";
 	int			i;
 
 	i = 0;
 	if (color == 0)
 	{
-		while (valide_char[i] && i <= 11)
+		while (valide_char[i] && i <= 12)
 		{
 			if (c == valide_char[i])
 				return (SUCCESS);
@@ -53,9 +53,10 @@ static int	ft_check_parsing_color(char *line)
 		i++;
 	else
 		return (0);
-	i = 0;
-	while (ft_strchr(hex, line[i]) && line[i])
+	while (line[i] && ft_strchr(hex, line[i]))
+	{
 		i++;
+	}
 	if (i > 8 && i <= 0)
 		return (0);
 	return (i);
@@ -67,24 +68,25 @@ static void	*ft_check_parsing_value_color(char *line)
 	int	tmp;
 
 	i = 0;
-	while (line[i])
+	while (line[i] && line[i] != '\n')
 	{
-		while (line[i] == ' ' && line[i])
+		while (line[i] && line[i] == ' ')
 			i++;
 		if (line[i] == '-')
 			i++;
-		while (ft_isdigit(line[i]))
+		while (line[i] && ft_isdigit(line[i]))
 			i++;
 		if (line[i] == '-')
 			return (FAIL);
 		if (line[i] == ',')
 		{
-			i++;
-			tmp = i;
+			tmp = ++i;
 			i += ft_check_parsing_color(&line[i]);
 			if (tmp == i)
 				return (FAIL);
 		}
+		if (line[i] != ' ' && line[i] != '\n')
+			return (FAIL);
 	}
 	return (SUCCESS);
 }
@@ -94,7 +96,7 @@ static void	*ft_check_parsing_value(char *line)
 	int			i;
 
 	i = 0;
-	while (line[i])
+	while (line[i] && line[i] != '\n')
 	{
 		while (line[i] == ' ' && line[i])
 			i++;

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:08:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 12:57:54 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:00:42 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,12 @@ void	*ft_main_parsing(int fd, t_vars *vars)
 		str = get_next_line(fd);
 		if (!str)
 			break ;
-		// if (!ft_check_parsing(str))
-		// 	return (free(str), NULL);
+		if (!ft_check_parsing(str))
+			return (free(str), NULL);
 		x = 0;
 		if (!ft_create_map(&(vars->lst), str, y, x))
 			return (free(str), NULL);
+		ft_putstr_fd(str, 1);
 		free(str);
 		y++;
 	}

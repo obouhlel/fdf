@@ -6,13 +6,13 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:34:15 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 12:32:27 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:14:50 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-int	ft_check_line(t_line line)
+static int	ft_check_line(t_line line)
 {
 	if (line.start[X] == -1 || line.start[Y] == -1 || \
 		line.stop[X] == -1 || line.stop[Y] == -1)
@@ -20,7 +20,7 @@ int	ft_check_line(t_line line)
 	return (1);
 }
 
-void	ft_trace_line(t_vars *vars, t_list *lst)
+void	ft_trace_img(t_vars *vars)
 {
 	t_line	line;
 	int		point[2];
@@ -32,23 +32,17 @@ void	ft_trace_line(t_vars *vars, t_list *lst)
 	{
 		point[Y] = y;
 		x = 0;
-		while (x <= ft_find_x_max_map(lst, y))
+		while (x <= ft_find_x_max_map(vars->lst, y))
 		{
 			point[X] = x;
-			ft_find_next_point_x(lst, &line, point);
+			ft_find_next_point_x(vars->lst, &line, point);
 			if (ft_check_line(line))
 				ft_put_line(vars, line);
-			ft_find_next_point_y(lst, &line, point);
+			ft_find_next_point_y(vars->lst, &line, point);
 			if (ft_check_line(line))
 				ft_put_line(vars, line);
 			x++;
 		}
 		y++;
 	}
-}
-
-void	ft_trace_img(t_vars *vars)
-{
-	ft_calcule_pixel(vars, vars->lst);
-	ft_trace_line(vars, vars->lst);
 }

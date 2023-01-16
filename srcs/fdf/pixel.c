@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:09:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 10:29:30 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:28:36 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static void	ft_calcule_pixel_point(t_vars *vars, t_list *lst)
 	moy_px[Y] = win[Y] / 2;
 	vars->origin[X] = moy_f[X] * vars->dist_point - moy_px[X];
 	vars->origin[Y] = moy_f[Y] * vars->dist_point - moy_px[Y];
-	vars->origin[X] = abs(vars->origin[X]);
-	vars->origin[Y] = abs(vars->origin[Y]);
 }
 
 static void	*ft_calcule_pixel_bis(t_vars *vars, t_list *lst)
@@ -64,6 +62,7 @@ static void	*ft_calcule_pixel_bis(t_vars *vars, t_list *lst)
 void	*ft_calcule_pixel(t_vars *vars, t_list *lst)
 {
 	int	min[2];
+	int	max[2];
 
 	ft_calcule_pixel_bis(vars, lst);
 	min[X] = ft_find_pixel_min_x(lst);
@@ -73,6 +72,14 @@ void	*ft_calcule_pixel(t_vars *vars, t_list *lst)
 		lst->pixel->x += (min[X] * -1) + 5;
 		lst->pixel->y += (min[Y] * -1) + 5;
 		lst = lst->next;
+	}
+	max[X] = ft_find_pixel_max_x(vars->lst);
+	max[Y] = ft_find_pixel_max_y(vars->lst);
+	if (max[X] > WIN_X || max[Y] > WIN_Y)
+	{
+		vars->dist_point--;
+		ft_lst_pixel_clear(vars->lst);
+		ft_calcule_pixel(vars, vars->lst);
 	}
 	return (SUCCESS);
 }

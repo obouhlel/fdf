@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:10:52 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 12:56:29 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:11:50 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	ft_better_dist(t_vars *vars)
 	int	dist[2];
 	int	check[2];
 
-	x_max = ft_find_x_max_proj(vars->lst) + 0.5;
-	y_max = ft_find_y_max_proj(vars->lst) + 0.5;
+	x_max = ft_find_x_max_proj(vars->lst) + 1.5;
+	y_max = ft_find_y_max_proj(vars->lst) + 1.5;
 	if (y_max == 0)
 		y_max = 1;
 	if (x_max == 0)
@@ -29,7 +29,6 @@ int	ft_better_dist(t_vars *vars)
 	dist[Y] = (WIN_Y - 1 - (5 * 2)) / y_max;
 	check[X] = dist[X] * y_max;
 	check[Y] = dist[Y] * x_max;
-	printf("check[X] = %d\ncheck[Y] = %d\n", check[X], check[Y]);
 	if (check[Y] < (WIN_X - 1 - (5 * 2)))
 		return (dist[Y]);
 	if (check[X] < (WIN_Y - 1 - (5 * 2)))

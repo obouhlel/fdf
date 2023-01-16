@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:50:56 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/11 16:02:52 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:27:34 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,14 @@ void	ft_lst_clear(t_list *lst)
 			free(lst->pixel);
 		free(lst);
 		lst = tmp;
+	}
+}
+
+void	ft_lst_pixel_clear(t_list *lst)
+{
+	while (lst)
+	{
+		free(lst->pixel);
+		lst = lst->next;
 	}
 }

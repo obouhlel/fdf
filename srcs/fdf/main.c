@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:00:26 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 12:57:38 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:13:45 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	main_fdf_bis(t_vars *vars)
 		return (EXIT_FAILURE);
 	}
 	vars->dist_point = ft_better_dist(vars);
+	ft_calcule_pixel(vars, vars->lst);
 	window_init(vars);
 	ft_free_vars(vars);
 	return (EXIT_SUCCESS);

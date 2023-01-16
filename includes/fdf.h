@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 13:02:42 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:27:50 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ t_list	*ft_lst_last(t_list *lst);
 void	ft_lst_add_back(t_list **lst, t_list *new);
 void	ft_lst_print(t_list *lst);
 void	ft_lst_clear(t_list *lst);
+void	ft_lst_pixel_clear(t_list *lst);
 
 //========================VARS============================//
 typedef struct s_vars

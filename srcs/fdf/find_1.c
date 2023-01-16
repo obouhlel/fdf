@@ -6,13 +6,13 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:10:52 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 15:11:50 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:46:47 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-int	ft_better_dist(t_vars *vars)
+int	ft_calculate_dist_point(t_vars *vars)
 {
 	int	x_max;
 	int	y_max;

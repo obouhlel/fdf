@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:34:15 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 15:14:50 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:36:30 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	ft_trace_img(t_vars *vars)
 			point[X] = x;
 			ft_find_next_point_x(vars->lst, &line, point);
 			if (ft_check_line(line))
-				ft_put_line(vars, line);
+				ft_put_line(vars, &line);
 			ft_find_next_point_y(vars->lst, &line, point);
 			if (ft_check_line(line))
-				ft_put_line(vars, line);
+				ft_put_line(vars, &line);
 			x++;
 		}
 		y++;

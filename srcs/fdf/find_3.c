@@ -6,31 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:08:57 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 12:36:26 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:37:07 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
-
-int	ft_find_x_max_map(t_list *lst, int y)
-{
-	int	x_max;
-
-	x_max = 0;
-	while (lst)
-	{
-		while (lst && lst->map->y == y)
-		{
-			if (x_max < lst->map->x)
-				x_max = lst->map->x;
-			lst = lst->next;
-		}
-		if (x_max > 0)
-			return (x_max);
-		lst = lst->next;
-	}
-	return (x_max);
-}
 
 void	ft_init_line(t_line *line)
 {

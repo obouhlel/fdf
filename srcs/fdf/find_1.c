@@ -6,13 +6,13 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:10:52 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/12 15:00:37 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 11:03:49 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-void	ft_better_dist(t_vars *vars, int x_max, int y_max)
+int	ft_better_dist(int x_max, int y_max)
 {
 	const int	win_x_max = WIN_X - 1 - (5 * 2);
 	const int	win_y_max = WIN_Y - 1 - (5 * 2);
@@ -21,12 +21,15 @@ void	ft_better_dist(t_vars *vars, int x_max, int y_max)
 
 	dist[X] = win_x_max / x_max;
 	dist[Y] = win_y_max / y_max;
-	check[X] = dist[Y] * x_max;
-	check[Y] = dist[X] * y_max;
-	if (check[X] < check[Y])
-		vars->dist_point = dist[Y];
+	check[X] = dist[X] * y_max;
+	check[Y] = dist[Y] * x_max;
+	printf("check x = %d\ncheck y = %d\n", check[X], check[Y]);
+	if (check[Y] < win_x_max)
+		return (dist[Y]);
+	if (check[X] < win_y_max)
+		return (dist[X]);
 	else
-		vars->dist_point = dist[X];
+		return (2);
 }
 
 float	ft_find_x_min_proj(t_list *lst)

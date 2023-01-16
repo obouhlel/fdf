@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:00:26 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 10:53:22 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:12:10 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	main_fdf_bis(t_vars *vars)
 		ft_free_vars(vars);
 		return (EXIT_FAILURE);
 	}
-	vars->dist_point = ft_better_dist(vars->x_max, vars->y_max);
+	vars->dist_point = ft_better_dist(ft_find_x_max_proj(vars->lst), ft_find_y_max_proj(vars->lst));
 	window_init(vars);
 	ft_free_vars(vars);
 	return (EXIT_SUCCESS);

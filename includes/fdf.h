@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 10:50:19 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:29:41 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ typedef struct s_vars
 	int				endian;
 	t_list			*lst;
 	int				origin[2];
-	int				x_max;
-	int				y_max;
+	int				max_y_map;
+	int				max_x_map;
 	int				dist_point;
 }	t_vars;
 
@@ -169,6 +169,7 @@ int		ft_find_pixel_min_y(t_list *lst);
 int		ft_find_pixel_max_x(t_list *lst);
 int		ft_find_pixel_max_y(t_list *lst);
 
+int		ft_find_x_max_map(t_list *lst, int y);
 void	ft_init_line(t_line *line);
 void	ft_find_next_point_x(t_list *lst, t_line *line, int point[2]);
 void	ft_find_next_point_y(t_list *lst, t_line *line, int point[2]);

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:10:52 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 11:03:49 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:02:38 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_better_dist(int x_max, int y_max)
 	dist[Y] = win_y_max / y_max;
 	check[X] = dist[X] * y_max;
 	check[Y] = dist[Y] * x_max;
-	printf("check x = %d\ncheck y = %d\n", check[X], check[Y]);
 	if (check[Y] < win_x_max)
 		return (dist[Y]);
 	if (check[X] < win_y_max)

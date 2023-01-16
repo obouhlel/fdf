@@ -6,20 +6,11 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:34:15 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 10:59:48 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:23:47 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
-
-// static void	ft_put_pixel_test(t_vars *vars, t_list *lst)
-// {
-// 	while (lst)
-// 	{
-// 		put_pixel(vars, lst->pixel->x, lst->pixel->y, lst->pixel->color);
-// 		lst = lst->next;
-// 	}
-// }
 
 int	ft_check_line(t_line line)
 {
@@ -37,11 +28,11 @@ void	ft_trace_line(t_vars *vars, t_list *lst)
 	int		y;
 
 	y = 0;
-	while (y <= vars->y_max)
+	while (y <= vars->max_y_map)
 	{
 		point[Y] = y;
 		x = 0;
-		while (x <= vars->x_max)
+		while (x <= ft_find_x_max_map(lst, vars->max_y_map))
 		{
 			point[X] = x;
 			ft_find_next_point_x(lst, &line, point);

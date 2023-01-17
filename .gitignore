@@ -7,4 +7,5 @@ fdf.out
 #files
 *.a
 *.o
+*.d
 srcs/minilibx/test/mlx-test

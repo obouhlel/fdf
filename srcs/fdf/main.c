@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:00:26 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 15:46:47 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:37:45 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	main_fdf(int fd)
 		ft_putendl_fd("Error", 1);
 		return (EXIT_FAILURE);
 	}
-	if (!ft_main_parsing(fd, vars))
+	if (!ft_main_parsing(fd, vars) || !(vars->lst))
 	{
 		ft_putendl_fd("Error", 1);
 		ft_free_vars(vars);

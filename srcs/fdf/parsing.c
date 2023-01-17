@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:08:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 14:00:42 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:11:34 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	*ft_create_map(t_list **lst, char *str, int y, int x)
 			color = ft_atoi_base_16(++str);
 			str += ft_calcule_offset(color, 16) + 2;
 		}
-		tmp = ft_lst_new(ft_new_map(x++, y, z, color), NULL, NULL);
+		tmp = ft_lst_new(ft_new_map(x++, y, z, color));
 		if (!tmp || !tmp->map)
 			return (NULL);
 		ft_lst_add_back(lst, tmp);

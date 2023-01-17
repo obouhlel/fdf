@@ -6,13 +6,13 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:57:42 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 16:37:51 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:13:29 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-t_list	*ft_lst_new(t_map *map, t_proj *proj, t_pixel *pixel)
+t_list	*ft_lst_new(t_map *map)
 {
 	t_list	*new;
 
@@ -21,8 +21,8 @@ t_list	*ft_lst_new(t_map *map, t_proj *proj, t_pixel *pixel)
 	if (!new)
 		return (NULL);
 	new->map = map;
-	new->proj = proj;
-	new->pixel = pixel;
+	new->proj = NULL;
+	new->pixel = NULL;
 	new->next = NULL;
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/17 11:35:08 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:12:09 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-t_list	*ft_lst_new(t_map *map, t_proj *proj, t_pixel *pixel);
+t_list	*ft_lst_new(t_map *map);
 t_map	*ft_new_map(int x, int y, int z, int color);
 t_proj	*ft_new_proj(float x, float y);
 t_pixel	*ft_new_pixel(int x, int y, int color);

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:57:42 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 16:37:51 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:30:33 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_list	*ft_lst_new(t_map *map, t_proj *proj, t_pixel *pixel)
 	new->map = map;
 	new->proj = proj;
 	new->pixel = pixel;
+	new->line_right = NULL;
+	new->line_down = NULL;
 	new->next = NULL;
 	return (new);
 }

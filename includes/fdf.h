@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/17 09:36:57 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:30:06 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ typedef struct s_list
 	t_map			*map;
 	t_proj			*proj;
 	t_pixel			*pixel;
+	t_line			*line_right;
+	t_line			*line_down;
 	struct s_list	*next;
 }	t_list;
 
@@ -166,9 +168,8 @@ int		ft_find_pixel_max_x(t_list *lst);
 int		ft_find_pixel_max_y(t_list *lst);
 //file find_3.c
 int		ft_find_x_max_map(t_list *lst, int y);
-void	ft_init_line(t_line *line);
-void	ft_find_next_point_x(t_list *lst, t_line *line, int point[2]);
-void	ft_find_next_point_y(t_list *lst, t_line *line, int point[2]);
+t_line	*ft_find_next_point_x(t_list *lst, int point[2]);
+t_line	*ft_find_next_point_y(t_list *lst, int point[2]);
 //file pixel.c
 void	*ft_calcule_pixel(t_vars *vars, t_list *lst);
 //file trace.c

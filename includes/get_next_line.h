@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:53:20 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/16 16:37:47 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:37:25 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
+#  define BUFFER_SIZE 500
 # endif
 
 char	*get_next_line(int fd);

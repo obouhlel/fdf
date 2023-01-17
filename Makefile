@@ -1,34 +1,38 @@
 #VARIABLES
 
-NAME		= fdf
+NAME		:= fdf
 
-NAME_LIB	= libfdf.a
+NAME_LIB	:= libfdf.a
 
-SRCS		= srcs/fdf/main.c srcs/fdf/vars.c \
+SRCS		:= srcs/fdf/main.c srcs/fdf/vars.c \
             srcs/fdf/list/ft_lst_add_back.c srcs/fdf/list/ft_lst_last.c srcs/fdf/list/ft_lst_new.c srcs/fdf/list/ft_lst_clear.c \
 			srcs/fdf/parsing.c srcs/fdf/check_parsing.c \
 			srcs/fdf/projection.c srcs/fdf/pixel.c srcs/fdf/find_1.c srcs/fdf/find_2.c srcs/fdf/find_3.c \
 			srcs/fdf/trace.c srcs/fdf/put_line.c srcs/fdf/window.c
 
-OBJS		= $(SRCS:%.c=%.o)
+OBJS_FOLDER	:= ./objs/
 
-INCS		= includes/fdf.h includes/libft.h includes/get_next_line.h includes/mlx.h includes/mlx_int.h
+OBJS		:= $(SRCS:.c=.o)
 
-LIBS		= lib/libfdf.a lib/libft.a lib/libgnl.a lib/libmlx.a lib/libmlx_Linux.a
+OBJS		:= $(addprefix $(OBJS_FOLDER),$(OBJS))
 
-CC			= gcc
+DEPS		:= $(OBJS:.o=.d)
 
-CFLAGS		= -Wall -Wextra -Werror -g3
+LIBS		:= lib/libfdf.a lib/libft.a lib/libgnl.a lib/libmlx.a lib/libmlx_Linux.a
 
-AR			= ar rcs
+CC			:= gcc
 
-RM			= rm -rf
+CFLAGS		:= -Wall -Wextra -Werror -g3 -MMD
+
+AR			:= ar rcs
+
+RM			:= rm -rf
 
 #RULES
 
 all			: ${NAME}
 
-${NAME}		: ${OBJS} ${INCS}
+${NAME}		: ${OBJS}
 			mkdir -p lib
 			@make -C srcs/libft
 			@mv srcs/libft/libft.a lib/
@@ -45,7 +49,7 @@ clean		:
 			@make clean -C srcs/libft
 			@make clean -C srcs/gnl
 			@make clean -C srcs/minilibx
-			${RM} lib/* lib/ ${OBJS}
+			${RM} lib/* lib/ ${OBJS_FOLDER} ${OBJS} ${DEPS}
 
 fclean		: clean
 			${RM} ${NAME}
@@ -58,5 +62,8 @@ norme		:
 
 .PHONY		: all clean fclean re norme
 
-%.o         : %.c
+-include $(DEPS)
+
+$(OBJS_FOLDER)%.o	: %.c
+			mkdir -p $(@D)
 	        ${CC} ${CFLAGS} -I/usr/include -Imlx_linux -O3 -c $< -o $@

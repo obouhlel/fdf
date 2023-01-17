@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/17 09:36:57 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:35:08 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 //======================RETURN=========================//
 # define SUCCESS		(void *)1
 # define FAIL			(void *)0
-# define START			(void *)1
 
 //=====================WINDOW SIZE=====================//
 # define WIN_X 1200
@@ -140,19 +139,19 @@ void	ft_free_vars(t_vars *vars);
 //======================PARSING============================//
 //file parsing.c
 void	*ft_main_parsing(int fd, t_vars *vars);
-//check_parsing.c
+//file check_parsing.c
 void	*ft_check_parsing(char *line);
 
 //=======================WINDOW============================//
-//file Window.c
+//file window.c
 int		window_init(t_vars *vars);
 int		keyboard(int keycode, t_vars *vars);
 void	put_pixel(t_vars *vars, int x, int y, int color);
 int		close_window(t_vars *vars);
 
 //=======================PROJECTION=======================//
+//file projection.c
 void	*ft_main_projection(t_vars *vars);
-
 //file find_1.c
 int		ft_calculate_dist_point(t_vars *vars);
 float	ft_find_x_min_proj(t_list *lst);

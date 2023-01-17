@@ -1,24 +1,28 @@
-SRCS	= get_next_line.c get_next_line_utils.c
+SRCS		:= get_next_line.c get_next_line_utils.c
 
-OBJS	= ${SRCS:.c=.o}
+OBJS_FOLDER	:= ../../objs/
 
-INCS	= ../../includes/get_next_line.h
+OBJS		:= $(SRCS:.c=.o)
 
-CC		= gcc
+OBJS		:= $(addprefix $(OBJS_FOLDER),$(OBJS))
 
-CFLAGS	= -Wall -Wextra -Werror -g3
+DEPS		:= $(OBJS:.o=.d)
 
-NAME	= libgnl.a
+CC			:= gcc
 
-AR		= ar rcs
+CFLAGS		:= -Wall -Wextra -Werror -g3 -MMD
 
-RM		= rm -f
+NAME		:= libgnl.a
+
+AR			:= ar rcs
+
+RM			:= rm -f
 
 #RULES
 
 all		: ${NAME}
 
-${NAME}	: ${OBJS} ${INCS}
+${NAME}	: ${OBJS}
 		${AR} ${NAME} ${OBJS}
 
 clean	:
@@ -31,5 +35,8 @@ re		: fclean all
 
 .PHONY	: all clean fclean re
 
-%.o		: %.c
-		${CC} ${CFLAGS} -c $< -o $@
+-include $(DEPS)
+
+$(OBJS_FOLDER)%.o	: %.c
+			mkdir -p $(@D)
+	        ${CC} ${CFLAGS} -c $< -o $@

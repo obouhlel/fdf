@@ -1,14 +1,13 @@
 #VARIABLES
 
-NAME		= fdf.out
+NAME		= fdf
 
 NAME_LIB	= libfdf.a
 
 SRCS		= srcs/fdf/main.c srcs/fdf/vars.c \
-            srcs/fdf/list/ft_lst_add_back.c srcs/fdf/list/ft_lst_last.c srcs/fdf/list/ft_lst_new.c \
-            srcs/fdf/list/ft_lst_print.c srcs/fdf/list/ft_lst_clear.c \
+            srcs/fdf/list/ft_lst_add_back.c srcs/fdf/list/ft_lst_last.c srcs/fdf/list/ft_lst_new.c srcs/fdf/list/ft_lst_clear.c \
 			srcs/fdf/parsing.c srcs/fdf/check_parsing.c \
-			srcs/fdf/projection.c srcs/fdf/find_1.c srcs/fdf/find_2.c srcs/fdf/find_3.c srcs/fdf/pixel.c \
+			srcs/fdf/projection.c srcs/fdf/pixel.c srcs/fdf/find_1.c srcs/fdf/find_2.c srcs/fdf/find_3.c \
 			srcs/fdf/trace.c srcs/fdf/put_line.c srcs/fdf/window.c
 
 OBJS		= $(SRCS:%.c=%.o)

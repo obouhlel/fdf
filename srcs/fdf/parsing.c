@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:08:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/18 05:47:55 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 09:13:30 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static int	ft_calcule_offset(int n, int base)
 
 static void	*ft_create_map(t_list **lst, char *str, int y)
 {
+	static t_list	*start_line = NULL;
+	t_list			*top;
 	t_list			*tmp;
 	int				x;
 	int				z;
@@ -38,6 +40,7 @@ static void	*ft_create_map(t_list **lst, char *str, int y)
 
 	x = 0;
 	tmp = NULL;
+	top = start_line;
 	while (*str && *str != '\n')
 	{
 		color = 0;
@@ -50,10 +53,15 @@ static void	*ft_create_map(t_list **lst, char *str, int y)
 			color = ft_atoi_base_16(++str);
 			str += ft_calcule_offset(color, BASE_16) + 2;
 		}
-		tmp = ft_lst_new(ft_new_map(x++, y, z, color));
+		tmp = ft_lst_new(ft_new_map(x, y, z, color), top);
 		if (!tmp || !tmp->map)
 			return (NULL);
 		ft_lst_add_back(lst, tmp);
+		if (top)
+			top = top->next;
+		if (x == 0)
+			start_line = tmp;
+		x++;
 	}
 	return (lst);
 }

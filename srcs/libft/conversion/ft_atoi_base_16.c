@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 09:23:55 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/07 09:24:32 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 06:38:16 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_base_is_16(char c)
 {
-	const char	*hex = "0123456789ABCDEF";
+	const char	*hex = "0123456789ABCDEFabcdef";
 	int			i;
 
 	i = 0;
@@ -44,6 +44,8 @@ unsigned int	ft_atoi_base_16(char *nstr)
 			n = (n * 16) + nstr[i] - '0';
 		if (nstr[i] >= 'A' && nstr[i] <= 'F')
 			n = (n * 16) + nstr[i] - 'A' + 10;
+		if (nstr[i] >= 'a' && nstr[i] <= 'f')
+			n = (n * 16) + nstr[i] - 'a' + 10;
 		i++;
 	}
 	return (n);

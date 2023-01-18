@@ -6,13 +6,13 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:57:42 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/18 06:05:26 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 08:14:39 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/fdf.h"
 
-t_list	*ft_lst_new(t_map *map)
+t_list	*ft_lst_new(t_map *map, t_list *top)
 {
 	t_list	*new;
 
@@ -23,8 +23,10 @@ t_list	*ft_lst_new(t_map *map)
 	new->map = map;
 	new->proj = NULL;
 	new->pixel = NULL;
+	new->top = top;
 	new->line_right = ft_init_line();
 	new->line_down = ft_init_line();
+	new->previous = NULL;
 	new->next = NULL;
 	return (new);
 }

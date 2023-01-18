@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:34:15 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/18 06:02:45 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 07:01:51 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_trace_img(t_vars *vars)
 	while (list)
 	{
 		ft_put_line(vars, &(list->line_right));
+		ft_put_line(vars, &(list->line_down));
 		list = list->next;
 	}
 }

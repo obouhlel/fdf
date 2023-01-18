@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 12:12:37 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/18 05:17:03 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 08:09:15 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ t_vars	*ft_init_vars(t_vars *vars)
 	vars->size_line = 0;
 	vars->endian = 0;
 	vars->lst = NULL;
-	vars->map = NULL;
 	vars->origin[X] = 0;
 	vars->origin[Y] = 0;
 	vars->max_x_map = 0;

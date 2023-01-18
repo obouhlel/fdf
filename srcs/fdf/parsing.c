@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:08:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/18 05:23:36 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 05:47:55 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ static int	ft_calcule_offset(int n, int base)
 
 static void	*ft_create_map(t_list **lst, char *str, int y)
 {
-	t_list	*tmp;
-	int		x;
-	int		z;
-	int		color;
+	t_list			*tmp;
+	int				x;
+	int				z;
+	int				color;
 
 	x = 0;
 	tmp = NULL;
@@ -56,6 +56,22 @@ static void	*ft_create_map(t_list **lst, char *str, int y)
 		ft_lst_add_back(lst, tmp);
 	}
 	return (lst);
+}
+
+void	ft_vars_max_x(t_vars *vars, t_list *lst)
+{
+	int	x_max;
+	int	y;
+
+	x_max = 0;
+	y = 0;
+	while (lst && lst->map->y == y)
+	{
+		if (x_max < lst->map->x)
+			x_max = lst->map->x;
+		lst = lst->next;
+	}
+	vars->max_x_map = x_max;
 }
 
 void	*ft_main_parsing(int fd, t_vars *vars)
@@ -82,5 +98,7 @@ void	*ft_main_parsing(int fd, t_vars *vars)
 		}
 	}
 	vars->max_y_map = y;
+	if (vars->lst)
+		ft_vars_max_x(vars, vars->lst);
 	return (SUCCESS);
 }

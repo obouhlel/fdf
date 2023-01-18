@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:57:42 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/17 18:13:29 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 06:05:26 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,22 @@ t_list	*ft_lst_new(t_map *map)
 	new->map = map;
 	new->proj = NULL;
 	new->pixel = NULL;
+	new->line_right = ft_init_line();
+	new->line_down = ft_init_line();
 	new->next = NULL;
 	return (new);
+}
+
+t_line	ft_init_line(void)
+{
+	t_line	line;
+
+	line.start[X] = -1;
+	line.start[Y] = -1;
+	line.stop[X] = -1;
+	line.stop[Y] = -1;
+	line.color = 0;
+	return (line);
 }
 
 t_map	*ft_new_map(int x, int y, int z, int color)

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/18 05:22:11 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 06:06:32 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,13 @@ typedef struct s_list
 	t_map			*map;
 	t_proj			*proj;
 	t_pixel			*pixel;
+	t_line			line_right;
+	t_line			line_down;
 	struct s_list	*next;
 }	t_list;
 
 t_list	*ft_lst_new(t_map *map);
+t_line	ft_init_line(void);
 t_map	*ft_new_map(int x, int y, int z, int color);
 t_proj	*ft_new_proj(float x, float y);
 t_pixel	*ft_new_pixel(int x, int y, int color);
@@ -168,13 +171,10 @@ int		ft_find_pixel_min_x(t_list *lst);
 int		ft_find_pixel_min_y(t_list *lst);
 int		ft_find_pixel_max_x(t_list *lst);
 int		ft_find_pixel_max_y(t_list *lst);
-//file find_3.c
-int		ft_find_x_max_map(t_list *lst, int y);
-void	ft_init_line(t_line *line);
-void	ft_find_next_point_x(t_list *lst, t_line *line, int point[2]);
-void	ft_find_next_point_y(t_list *lst, t_line *line, int point[2]);
 //file pixel.c
 void	*ft_calcule_pixel(t_vars *vars, t_list *lst);
+//file line.c
+void	*ft_calcule_line(t_vars *vars, t_list *lst);
 //file trace.c
 void	ft_trace_img(t_vars *vars);
 //file put_line.c

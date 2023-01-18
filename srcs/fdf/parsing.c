@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:08:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/18 15:34:52 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:50:26 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,39 +29,55 @@ static int	ft_calcule_offset(int n, int base)
 	return (size);
 }
 
-static void	*ft_create_map(t_list **lst, char *str, int y)
+static t_map	*ft_create_map_bis(char *str, int *offset, int x, int y)
+{
+	t_map	*map;
+	int		i;
+	int		z;
+	int		color;
+
+	i = 0;
+	color = 0;
+	while (str[i] == ' ')
+		i++;
+	z = ft_atoi(&str[i]);
+	i += ft_calcule_offset(z, BASE_10);
+	if (str[i] == ',')
+	{
+		i++;
+		color = ft_atoi_base_16(&str[i]);
+		i += ft_calcule_offset(color, BASE_16) + 2;
+	}
+	*offset = i;
+	map = ft_new_map(x, y, z, color);
+	return (map);
+}
+
+static void	*ft_create_map(t_list **lst, char *str, int x, int y)
 {
 	static t_list	*start_line = NULL;
+	int				offset;
 	t_list			*top;
 	t_list			*tmp;
-	int				x;
-	int				z;
-	int				color;
+	t_map			*map;
 
-	x = 0;
 	tmp = NULL;
+	offset = 0;
 	top = start_line;
 	while (*str && *str != '\n')
 	{
-		color = 0;
-		while (*str == ' ')
-			str++;
-		z = ft_atoi(str);
-		str += ft_calcule_offset(z, BASE_10);
-		if (*str == ',')
-		{
-			color = ft_atoi_base_16(++str);
-			str += ft_calcule_offset(color, BASE_16) + 2;
-		}
-		tmp = ft_lst_new(ft_new_map(x, y, z, color), top);
-		if (!tmp || !tmp->map)
+		map = ft_create_map_bis(str, &offset, ++x, y);
+		if (!map)
+			return (NULL);
+		str += offset;
+		tmp = ft_lst_new(map, top);
+		if (!tmp)
 			return (NULL);
 		ft_lst_add_back(lst, tmp);
 		if (top)
 			top = top->next;
 		if (x == 0)
 			start_line = tmp;
-		x++;
 	}
 	return (lst);
 }
@@ -86,6 +102,7 @@ void	*ft_main_parsing(int fd, t_vars *vars)
 {
 	char	*str;
 	char	start;
+	int		x;
 	int		y;
 
 	start = 'S';
@@ -96,7 +113,8 @@ void	*ft_main_parsing(int fd, t_vars *vars)
 		str = get_next_line(fd);
 		if (str)
 		{
-			if (!ft_create_map(&(vars->lst), str, y))
+			x = -1;
+			if (!ft_create_map(&(vars->lst), str, x, y))
 				return (free(str), NULL);
 			ft_putstr_fd(str, 1);
 			free(str);

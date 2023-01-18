@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/17 18:12:09 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 05:22:11 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,17 @@
 # include <errno.h>
 # include <math.h>
 
+# define BASE_10	10
+# define BASE_16	16
+# define START		(char)83
+
 //======================RETURN=========================//
-# define SUCCESS		(void *)1
-# define FAIL			(void *)0
+# define SUCCESS	(void *)1
+# define FAIL		(void *)0
 
 //=====================WINDOW SIZE=====================//
-# define WIN_X 1200
-# define WIN_Y 700
+# define WIN_X		1200
+# define WIN_Y		700
 
 //========================EVENT========================//
 enum e_event {
@@ -126,6 +130,7 @@ typedef struct s_vars
 	int				size_line;
 	int				endian;
 	t_list			*lst;
+	int				**map;
 	int				origin[2];
 	int				max_y_map;
 	int				max_x_map;

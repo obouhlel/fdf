@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:08:58 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/17 18:11:34 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 05:23:36 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,31 @@ static int	ft_calcule_offset(int n, int base)
 	return (size);
 }
 
-static void	*ft_create_map(t_list **lst, char *str, int y, int x)
+static void	*ft_create_map(t_list **lst, char *str, int y)
 {
 	t_list	*tmp;
+	int		x;
 	int		z;
 	int		color;
 
+	x = 0;
 	tmp = NULL;
-	while (*str)
+	while (*str && *str != '\n')
 	{
 		color = 0;
 		while (*str == ' ')
 			str++;
 		z = ft_atoi(str);
-		str += ft_calcule_offset(z, 10);
+		str += ft_calcule_offset(z, BASE_10);
 		if (*str == ',')
 		{
 			color = ft_atoi_base_16(++str);
-			str += ft_calcule_offset(color, 16) + 2;
+			str += ft_calcule_offset(color, BASE_16) + 2;
 		}
 		tmp = ft_lst_new(ft_new_map(x++, y, z, color));
 		if (!tmp || !tmp->map)
 			return (NULL);
 		ft_lst_add_back(lst, tmp);
-		if (*str == '\n')
-			break ;
 	}
 	return (lst);
 }
@@ -61,24 +61,25 @@ static void	*ft_create_map(t_list **lst, char *str, int y, int x)
 void	*ft_main_parsing(int fd, t_vars *vars)
 {
 	char	*str;
+	char	start;
 	int		y;
-	int		x;
 
-	str = NULL;
+	start = 'S';
+	str = &start;
 	y = 0;
-	while (1)
+	while (str)
 	{
 		str = get_next_line(fd);
-		if (!str)
-			break ;
-		if (!ft_check_parsing(str))
-			return (free(str), NULL);
-		x = 0;
-		if (!ft_create_map(&(vars->lst), str, y, x))
-			return (free(str), NULL);
-		ft_putstr_fd(str, 1);
-		free(str);
-		y++;
+		if (str)
+		{
+			if (!ft_check_parsing(str))
+				return (free(str), NULL);
+			if (!ft_create_map(&(vars->lst), str, y))
+				return (free(str), NULL);
+			ft_putstr_fd(str, 1);
+			free(str);
+			y++;
+		}
 	}
 	vars->max_y_map = y;
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 05:50:06 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/18 09:14:15 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:39:34 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	ft_calcule_line(t_vars *vars, t_list *lst)
 {
-	t_list	*last;
 	int		y;
 
-	last = NULL;
 	y = 0;
 	while (lst && y <= vars->max_y_map)
 	{
@@ -31,23 +29,18 @@ void	ft_calcule_line(t_vars *vars, t_list *lst)
 			lst = lst->next;
 		}
 		lst = lst->next;
-		if (lst)
-			last = lst;
 		y++;
 	}
-	y = 0;
-	while (last && y <= vars->max_y_map)
+	lst = vars->lst;
+	while (lst->map->y == 0)
+		lst = lst->next;
+	while (lst && lst->top && lst->map->y > 0)
 	{
-		while (last && last->top)
-		{
-			last->line_down.start[X] = last->pixel->x;
-			last->line_down.start[Y] = last->pixel->y;
-			last->line_down.stop[X] = last->top->pixel->x;
-			last->line_down.stop[Y] = last->top->pixel->y;
-			last->line_down.color = last->pixel->color;
-			last = last->previous;
-		}
-		last = last->previous;
-		y++;
+		lst->line_down.start[X] = lst->pixel->x;
+		lst->line_down.start[Y] = lst->pixel->y;
+		lst->line_down.stop[X] = lst->top->pixel->x;
+		lst->line_down.stop[Y] = lst->top->pixel->y;
+		lst->line_down.color = lst->pixel->color;
+		lst = lst->next;
 	}
 }

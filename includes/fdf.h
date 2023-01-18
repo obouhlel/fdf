@@ -6,7 +6,7 @@
 /*   By: obouhlel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:58:41 by obouhlel          #+#    #+#             */
-/*   Updated: 2023/01/18 14:14:34 by obouhlel         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:34:48 by obouhlel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,6 @@ void	ft_free_vars(t_vars *vars);
 //======================PARSING============================//
 //file parsing.c
 void	*ft_main_parsing(int fd, t_vars *vars);
-//file check_parsing.c
-void	*ft_check_parsing(char *line);
 
 //=======================WINDOW============================//
 //file window.c
